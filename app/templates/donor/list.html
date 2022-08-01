@@ -1,0 +1,23 @@
+{% extends "layout.html" %} 
+{% from "_macros.html" import render_field %} 
+
+{% block title %}Donors{% endblock %} 
+
+{% block content %}
+<table>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for donor in donors %}
+    <tr>
+      <td>{{ donor.first_name }}</td>
+      <td>{{ donor.last_name }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

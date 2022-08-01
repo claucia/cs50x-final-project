@@ -1,6 +1,6 @@
 from flask import session
 from werkzeug.security import generate_password_hash
-from app.models import Role, User
+from app.models import Role, User, Donor
 from app.extensions import db
 from app.app import app
 
@@ -11,6 +11,7 @@ def setup():
         invalidate_http_sessions()
         create_admin_user()
         create_physician_user()
+        create_donor()
 
 
 def create_tables():
@@ -46,4 +47,15 @@ def create_physician_user():
                 password_hash=generate_password_hash('123'),
                 role=Role.PHYSICIAN)
     db.session.add(user)
+    db.session.commit()
+
+
+def create_donor():
+    app.logger.info("Creating donor...")
+    donor = Donor(first_name='Laila',
+                  last_name='Doe',
+                  abo_rh='AB+',
+                  phone_number='083 000 0000',
+                  email='laila@mail.com')
+    db.session.add(donor)
     db.session.commit()
