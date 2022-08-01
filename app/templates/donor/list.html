@@ -9,6 +9,11 @@
     <tr>
       <th>First name</th>
       <th>Last name</th>
+      <th>ABO/Rh</th>
+      <th>Phone number</th>
+      <th>email</th>
+      <th>Last donation date</th>
+      <th>Action</th>
     </tr>
   </thead>
   <tbody>
@@ -16,6 +21,11 @@
     <tr>
       <td>{{ donor.first_name }}</td>
       <td>{{ donor.last_name }}</td>
+      <td>{{ donor.abo_rh }}</td>
+      <td>{{ donor.phone_number }}</td>
+      <td>{{ donor.email }}</td>
+      <td>{{ donor.last_donation_date }}</td>
+      <td><button>Donate</button></td>
     </tr>
     {% endfor %}
   </tbody>
