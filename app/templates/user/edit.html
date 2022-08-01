@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% from "_macros.html" import render_field %}
+
+{% block title %}Edit user{% endblock %}
+
+{% block content %}
+<form method="POST">
+    {{ render_field(form.first_name) }}
+    {{ render_field(form.last_name) }}
+    {{ render_field(form.email) }}
+    {{ render_field(form.role) }}
+    {{ render_field(form.submit) }}
+    <a href="{{ url_for('list_users') }}">Cancel</a>
+</form>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% from "_macros.html" import render_field, show_flashed_messages %}
+<!doctype html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+    <header>
+        <div class="content">
+            
+            <div class="logo">
+                <a href="{{ url_for('home') }}">Logo</a>
+            </div>
+
+            {% if current_user.is_authenticated %}
+
+            {% if current_user.is_admin() %}
+            <nav class="navigation">
+                <ul>
+                    <li><a href="{{ url_for('list_users') }}">Users</a></li>
+                </ul>
+            </nav>
+            {% endif %}
+
+            {% if current_user.is_physician() %}
+            <nav class="navigation"></nav>
+            {% endif %}
+
+            <div class="authenticated-user">
+                <span>{{ current_user.first_name }} ({{ current_user.role }})</span>
+                <a href="{{ url_for('change_password')}}">Change password</a>
+                <a href="{{ url_for('logout')}}">Logout</a>                
+            </div>
+            {% endif %}
+
+        </div>
+    </header>
+    <main>
+        <div class="content">
+            {{ show_flashed_messages() }}
+            <h1>{{ self.title() }}</h1>
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+    <footer>
+        <div class="content">
+            This is the footer
+        </div>
+    </footer>
+</body>
+
+</html>
