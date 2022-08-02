@@ -64,7 +64,7 @@ def edit_user(user_id):
 
         db.session.commit()
 
-        flash('The user has updated')
+        flash('The user has been updated')
         return redirect(url_for('list_users'))
 
     form = EditUserForm()

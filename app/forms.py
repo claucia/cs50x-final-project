@@ -89,3 +89,21 @@ class CreateDonorForm(Form):
         'E-mail',
         [validators.DataRequired(), validators.Length(min=6, max=100)])
     submit = SubmitField('Create donor')
+
+
+class EditDonorForm(Form):
+    first_name = StringField(
+        'First name',
+        [validators.DataRequired(), validators.Length(min=2, max=100)])
+    last_name = StringField(
+        'Last name',
+        [validators.DataRequired(), validators.Length(min=2, max=100)])
+    abo_rh = StringField(
+        u'ABO/Rh', render_kw={'readonly': True})
+    phone_number = StringField(
+        'Phone number',
+        [validators.DataRequired(), validators.Length(min=6, max=100)])
+    email = StringField(
+        'E-mail',
+        [validators.DataRequired(), validators.Length(min=6, max=100)])
+    submit = SubmitField('Update donor')

@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, flash, url_for
 from flask_login import login_required
 from app.models import Role, Donor
 from app.app import app
-from app.forms import CreateDonorForm
+from app.forms import CreateDonorForm, EditDonorForm
 from app.extensions import db
 from app.utils import role_required
 
@@ -42,3 +42,36 @@ def create_donor():
         return redirect(url_for('list_donors'))
 
     return render_template('donor/create.html', form=form)
+
+
+@app.route('/donors/<int:donor_id>', methods=['POST', 'GET'])
+@login_required
+@role_required(Role.ADMIN)
+def edit_donor(donor_id):
+
+    donor = Donor.query.get(donor_id)
+    if donor is None:
+        flash('This donor could not be found')
+        return redirect(url_for('list_donors'))
+
+    form = EditDonorForm(request.form)
+    if request.method == 'POST' and form.validate():
+
+        donor.first_name = form.first_name.data
+        donor.last_name = form.last_name.data
+        donor.phone_number = form.phone_number.data
+        donor.email = form.email.data
+
+        db.session.commit()
+
+        flash('The donor has been updated')
+        return redirect(url_for('list_donors'))
+
+    form = EditDonorForm()
+    form.first_name.data = donor.first_name
+    form.last_name.data = donor.last_name
+    form.abo_rh.data = donor.abo_rh
+    form.phone_number.data = donor.phone_number
+    form.email.data = donor.email
+
+    return render_template('donor/edit.html', form=form)

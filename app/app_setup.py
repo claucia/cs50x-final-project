@@ -53,11 +53,9 @@ def create_physician_user():
 def create_donor():
     app.logger.info("Creating donor...")
     donor = Donor(first_name='Laila',
-                   last_name='Doe',
-                   abo_rh='AB+',
-                   phone_number='083 000 0000',
-                   email='laila@mail.com')
+                  last_name='Doe',
+                  abo_rh='AB+',
+                  phone_number='083 000 0000',
+                  email='laila@mail.com')
     db.session.add(donor)
     db.session.commit()
-
-    
