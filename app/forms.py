@@ -107,3 +107,12 @@ class EditDonorForm(Form):
         'E-mail',
         [validators.DataRequired(), validators.Length(min=6, max=100)])
     submit = SubmitField('Update donor')
+
+
+class CreateDonationForm(Form):
+    first_name = StringField(
+        u'First name', render_kw={'readonly': True})
+    last_name = StringField(
+        u'Last name', render_kw={'readonly': True})
+    abo_rh = StringField(
+        u'ABO/Rh', render_kw={'readonly': True})

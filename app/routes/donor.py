@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, flash, url_for
 from flask_login import login_required
 from app.models import Role, Donor
 from app.app import app
-from app.forms import CreateDonorForm, EditDonorForm
+from app.forms import CreateDonorForm, EditDonorForm, CreateDonationForm
 from app.extensions import db
 from app.utils import role_required
 
@@ -75,3 +75,19 @@ def edit_donor(donor_id):
     form.email.data = donor.email
 
     return render_template('donor/edit.html', form=form)
+
+
+@app.route('/donors/<int:donor_id>/create-donation', methods=['POST', 'GET'])
+@login_required
+@role_required(Role.ADMIN)
+def create_donation(donor_id):
+    donor = Donor.query.get(donor_id)
+
+    form = CreateDonationForm(request.form)
+    if request.method == 'GET' and form.validate():
+
+        form.first_name.data = donor.first_name
+        form.last_name.data = donor.last_name
+        form.abo_rh.data = donor.abo_rh
+
+    return render_template('donor/create-donation.html', form=form)

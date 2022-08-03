@@ -4,6 +4,8 @@
 {% block title %}Donors{% endblock %} 
 
 {% block content %}
+<a href="{{ url_for('create_donor') }}">Create new</a>
+<button>Search</button>
 <table>
   <thead>
     <tr>
@@ -25,7 +27,8 @@
       <td>{{ donor.phone_number }}</td>
       <td>{{ donor.email }}</td>
       <td>{{ donor.last_donation_date }}</td>
-      <td><button>Donate</button></td>
+      <td><a href="{{ url_for('edit_donor', donor_id=donor.id) }}">Edit</a></td>
+      <td><a href="{{ url_for('create_donation', donor_id=donor.id)}}">Donate</a></td>      
     </tr>
     {% endfor %}
   </tbody>

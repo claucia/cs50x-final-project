@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% from "_macros.html" import render_field %}
+
+{% block title %}Create donation{% endblock %}
+
+{% block content %}
+<form method="POST">
+    {{ render_field(form.first_name) }}
+    {{ render_field(form.last_name) }}
+    {{ render_field(form.abo_rh) }}
+    <a href="{{ url_for('list_donors') }}">Cancel</a>
+</form>
+{% endblock %}
