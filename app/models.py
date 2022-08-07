@@ -5,6 +5,9 @@ from sqlalchemy.orm import declarative_base, relationship
 Base = declarative_base()
 
 
+BLOOD_BAG_EXPIRY_TIME_IN_DAYS = 42
+
+
 class Role(object):
     __slots__ = ()
     ADMIN = 'admin'

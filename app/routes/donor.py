@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 from flask import Flask, render_template, request, redirect, flash, url_for
 from flask_login import login_required
 from sqlalchemy import or_, and_
-from app.models import Role, Donor, Donation
+from app.models import BLOOD_BAG_EXPIRY_TIME_IN_DAYS, Role, Donor, Donation
 from app.app import app
 from app.forms import CreateDonorForm, EditDonorForm, CreateDonationForm, SearchDonorForm
 from app.extensions import db
@@ -20,16 +20,18 @@ def list_donors():
     if request.method == 'POST' and form.validate():
 
         filters = []
+        name_criteria = form.name.data
+        abo_rh_criteria = form.abo_rh.data
 
-        if (form.name.data):
+        if (name_criteria):
             name_filter = or_(
-                Donor.first_name.ilike(f'%{form.name.data}%'),
-                Donor.last_name.ilike(f'%{form.name.data}%')
+                Donor.first_name.ilike(f'%{name_criteria}%'),
+                Donor.last_name.ilike(f'%{name_criteria}%')
             )
             filters.append(name_filter)
 
-        if (form.abo_rh.data):
-            abo_rh_filter = Donor.abo_rh == form.abo_rh.data
+        if (abo_rh_criteria):
+            abo_rh_filter = (Donor.abo_rh == abo_rh_criteria)
             filters.append(abo_rh_filter)
 
         donors = Donor.query.filter(and_(*filters))
@@ -115,7 +117,7 @@ def create_donation(donor_id):
         donation = Donation(donor=donor,
                             abo_rh=donor.abo_rh,
                             donation_date=donation_date,
-                            expiry_date=donation_date + timedelta(days=42))
+                            expiry_date=donation_date + timedelta(days=BLOOD_BAG_EXPIRY_TIME_IN_DAYS))
 
         donor.last_donation_date = donation_date
 
