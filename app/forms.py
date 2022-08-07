@@ -15,6 +15,12 @@ blood_type_choices = [(BloodType.A_POSITIVE, BloodType.A_POSITIVE),
                       (BloodType.O_NEGATIVE, BloodType.O_NEGATIVE)]
 
 
+def choices_with_empty_option(choices):
+    new_choices = choices[:]
+    new_choices.insert(0, ("", ""))
+    return new_choices
+
+
 class CreateUserForm(Form):
     first_name = StringField(
         'First name',
@@ -121,5 +127,7 @@ class CreateDonationForm(Form):
 
 
 class SearchDonorForm(Form):
-    query = StringField('Search')
+    name = StringField('Name')
+    abo_rh = SelectField(
+        'ABO/Rh', choices=choices_with_empty_option(blood_type_choices))
     submit = SubmitField('Search')

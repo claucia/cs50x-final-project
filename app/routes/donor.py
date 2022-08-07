@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 from flask import Flask, render_template, request, redirect, flash, url_for
 from flask_login import login_required
-from sqlalchemy import or_
+from sqlalchemy import or_, and_
 from app.models import Role, Donor, Donation
 from app.app import app
 from app.forms import CreateDonorForm, EditDonorForm, CreateDonationForm, SearchDonorForm
@@ -18,12 +18,21 @@ def list_donors():
     donors = []
 
     if request.method == 'POST' and form.validate():
-        search_criteria = f'%{form.query.data}%'
-        donors = Donor.query.filter(
-            or_(
-                Donor.first_name.like(search_criteria),
-                Donor.last_name.like(search_criteria)
-            ))
+
+        filters = []
+
+        if (form.name.data):
+            name_filter = or_(
+                Donor.first_name.ilike(f'%{form.name.data}%'),
+                Donor.last_name.ilike(f'%{form.name.data}%')
+            )
+            filters.append(name_filter)
+
+        if (form.abo_rh.data):
+            abo_rh_filter = Donor.abo_rh == form.abo_rh.data
+            filters.append(abo_rh_filter)
+
+        donors = Donor.query.filter(and_(*filters))
         return render_template('donor/list.html', donors=donors, form=form)
 
     donors = Donor.query.all()

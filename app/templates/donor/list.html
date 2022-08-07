@@ -7,7 +7,8 @@
 <a href="{{ url_for('create_donor') }}">Create new</a>
 
 <form method="POST">
-    {{ render_field(form.query) }}
+    {{ render_field(form.name) }}
+    {{ render_field(form.abo_rh) }}
     {{ render_field(form.submit) }}
 </form>
 
