@@ -27,6 +27,12 @@ def populate_database():
     create_physician_user()
     create_a_positive_donor()
     create_a_negative_donor()
+    create_b_positive_donor()
+    create_b_negative_donor()
+    create_ab_positive_donor()
+    create_ab_negative_donor()
+    create_o_positive_donor()
+    create_o_negative_donor()
 
 
 def invalidate_http_sessions():
@@ -78,6 +84,90 @@ def create_a_negative_donor():
                   phone_number='083 000 0000',
                   email='ww@mail.com')
     db.session.add(donor)
+    create_donation(donor)
+    db.session.commit()
+
+
+def create_b_positive_donor():
+    app.logger.info("Creating B+ donor...")
+    donor = Donor(first_name='Matilda',
+                  last_name='Stewart',
+                  abo_rh=BloodType.B_POSITIVE,
+                  phone_number='083 000 0000',
+                  email='ms@mail.com')
+    db.session.add(donor)
+    create_donation(donor, donation_date=datetime_from_string(
+        '2022-01-22 09:30:00'))
+    create_donation(donor)
+    db.session.commit()
+
+
+def create_b_negative_donor():
+    app.logger.info("Creating B- donor...")
+    donor = Donor(first_name='Alishia',
+                  last_name='Chan',
+                  abo_rh=BloodType.B_NEGATIVE,
+                  phone_number='083 000 0000',
+                  email='ac@mail.com')
+    db.session.add(donor)
+    create_donation(donor, donation_date=datetime_from_string(
+        '2020-12-25 11:30:00'))
+    create_donation(donor)
+    db.session.commit()
+
+
+def create_ab_positive_donor():
+    app.logger.info("Creating AB+ donor...")
+    donor = Donor(first_name='Everett',
+                  last_name='Gill',
+                  abo_rh=BloodType.AB_POSITIVE,
+                  phone_number='083 000 0000',
+                  email='eg@mail.com')
+    db.session.add(donor)
+    create_donation(donor, donation_date=datetime_from_string(
+        '2019-08-25 11:38:00'))
+    create_donation(donor)
+    db.session.commit()
+
+
+def create_ab_negative_donor():
+    app.logger.info("Creating AB- donor...")
+    donor = Donor(first_name='Sky',
+                  last_name='West',
+                  abo_rh=BloodType.AB_NEGATIVE,
+                  phone_number='083 000 0000',
+                  email='sw@mail.com')
+    db.session.add(donor)
+    create_donation(donor, donation_date=datetime_from_string(
+        '2020-03-16 11:55:00'))
+    create_donation(donor)
+    db.session.commit()
+
+
+def create_o_positive_donor():
+    app.logger.info("Creating O+ donor...")
+    donor = Donor(first_name='Rui',
+                  last_name='Flower',
+                  abo_rh=BloodType.O_POSITIVE,
+                  phone_number='083 000 0000',
+                  email='rf@mail.com')
+    db.session.add(donor)
+    create_donation(donor, donation_date=datetime_from_string(
+        '2020-03-16 11:55:00'))
+    create_donation(donor)
+    db.session.commit()
+
+
+def create_o_negative_donor():
+    app.logger.info("Creating O- donor...")
+    donor = Donor(first_name='Hope',
+                  last_name='Hook',
+                  abo_rh=BloodType.O_NEGATIVE,
+                  phone_number='083 000 0000',
+                  email='hh@mail.com')
+    db.session.add(donor)
+    create_donation(donor, donation_date=datetime_from_string(
+        '2020-03-16 11:55:00'))
     create_donation(donor)
     db.session.commit()
 
