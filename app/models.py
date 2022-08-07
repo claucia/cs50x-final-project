@@ -1,5 +1,8 @@
 from flask_login import UserMixin
 from app.extensions import db
+from sqlalchemy.orm import declarative_base, relationship
+
+Base = declarative_base()
 
 
 class Role(object):
@@ -48,7 +51,14 @@ class Donor(db.Model):
     email = db.Column(db.String(100), nullable=False, unique=True)
     last_donation_date = db.Column(db.DateTime(), nullable=True)
 
-# class Donation(db.Model):
-#     __tablename__ = 'donations'
-#     id = db.Column(db.Integer, primary_key=True)
-#     donor_id
+
+class Donation(db.Model):
+    __tablename__ = 'donations'
+
+    id = db.Column(db.Integer, primary_key=True)
+    donor_id = db.Column(db.Integer, db.ForeignKey(Donor.id))
+    abo_rh = db.Column(db.String(3), nullable=False)
+    donation_date = db.Column(db.DateTime(), nullable=False)
+    expiry_date = db.Column(db.DateTime(), nullable=False)
+
+    donor = relationship('Donor')

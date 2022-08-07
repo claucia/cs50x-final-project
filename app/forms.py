@@ -1,3 +1,4 @@
+from sqlalchemy import DateTime
 from wtforms import Form, StringField, PasswordField, SelectField, SubmitField, validators
 from app.models import BloodType, Role
 
@@ -116,3 +117,4 @@ class CreateDonationForm(Form):
         u'Last name', render_kw={'readonly': True})
     abo_rh = StringField(
         u'ABO/Rh', render_kw={'readonly': True})
+    submit = SubmitField('Register dononation')

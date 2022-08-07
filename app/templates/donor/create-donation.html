@@ -8,6 +8,7 @@
     {{ render_field(form.first_name) }}
     {{ render_field(form.last_name) }}
     {{ render_field(form.abo_rh) }}
+    {{ render_field(form.submit) }}
     <a href="{{ url_for('list_donors') }}">Cancel</a>
 </form>
 {% endblock %}
