@@ -1,9 +1,10 @@
 from datetime import datetime, timedelta
 from flask import Flask, render_template, request, redirect, flash, url_for
 from flask_login import login_required
+from sqlalchemy import or_
 from app.models import Role, Donor, Donation
 from app.app import app
-from app.forms import CreateDonorForm, EditDonorForm, CreateDonationForm
+from app.forms import CreateDonorForm, EditDonorForm, CreateDonationForm, SearchDonorForm
 from app.extensions import db
 from app.utils import role_required
 
@@ -12,8 +13,21 @@ from app.utils import role_required
 @login_required
 @role_required(Role.ADMIN)
 def list_donors():
+
+    form = SearchDonorForm(request.form)
+    donors = []
+
+    if request.method == 'POST' and form.validate():
+        search_criteria = f'%{form.query.data}%'
+        donors = Donor.query.filter(
+            or_(
+                Donor.first_name.like(search_criteria),
+                Donor.last_name.like(search_criteria)
+            ))
+        return render_template('donor/list.html', donors=donors, form=form)
+
     donors = Donor.query.all()
-    return render_template('donor/list.html', donors=donors)
+    return render_template('donor/list.html', donors=donors, form=form)
 
 
 @app.route('/donors/new', methods=['POST', 'GET'])
@@ -29,6 +43,7 @@ def create_donor():
             app.logger.info('%s has already been registered', form.email.data)
             return render_template('donor/create.html', form=form)
 
+        # Processo de instaciar uma classe
         donor = Donor(first_name=form.first_name.data,
                       last_name=form.last_name.data,
                       abo_rh=form.abo_rh.data,

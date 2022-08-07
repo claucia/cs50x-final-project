@@ -82,7 +82,7 @@ class CreateDonorForm(Form):
         'Last name',
         [validators.DataRequired(), validators.Length(min=2, max=100)])
     abo_rh = SelectField(
-        u'ABO/Rh', choices=blood_type_choices)
+        'ABO/Rh', choices=blood_type_choices)
     phone_number = StringField(
         'Phone number',
         [validators.DataRequired(), validators.Length(min=6, max=100)])
@@ -100,7 +100,7 @@ class EditDonorForm(Form):
         'Last name',
         [validators.DataRequired(), validators.Length(min=2, max=100)])
     abo_rh = StringField(
-        u'ABO/Rh', render_kw={'readonly': True})
+        'ABO/Rh', render_kw={'readonly': True})
     phone_number = StringField(
         'Phone number',
         [validators.DataRequired(), validators.Length(min=6, max=100)])
@@ -112,9 +112,14 @@ class EditDonorForm(Form):
 
 class CreateDonationForm(Form):
     first_name = StringField(
-        u'First name', render_kw={'readonly': True})
+        'First name', render_kw={'readonly': True})
     last_name = StringField(
-        u'Last name', render_kw={'readonly': True})
+        'Last name', render_kw={'readonly': True})
     abo_rh = StringField(
-        u'ABO/Rh', render_kw={'readonly': True})
-    submit = SubmitField('Register dononation')
+        'ABO/Rh', render_kw={'readonly': True})
+    submit = SubmitField('Register donation')
+
+
+class SearchDonorForm(Form):
+    query = StringField('Search')
+    submit = SubmitField('Search')

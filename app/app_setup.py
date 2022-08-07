@@ -11,7 +11,8 @@ def setup():
         invalidate_http_sessions()
         create_admin_user()
         create_physician_user()
-        create_donor()
+        create_donor_a_positive()
+        create_donor_a_negative()
 
 
 def create_tables():
@@ -50,12 +51,23 @@ def create_physician_user():
     db.session.commit()
 
 
-def create_donor():
-    app.logger.info("Creating donor...")
+def create_donor_a_positive():
+    app.logger.info("Creating donor A+...")
     donor = Donor(first_name='Laila',
                   last_name='Doe',
-                  abo_rh='AB+',
+                  abo_rh='A+',
                   phone_number='083 000 0000',
                   email='laila@mail.com')
+    db.session.add(donor)
+    db.session.commit()
+
+
+def create_donor_a_negative():
+    app.logger.info("Creating donor A-...")
+    donor = Donor(first_name='Livia',
+                  last_name='Doe',
+                  abo_rh='A-',
+                  phone_number='083 000 0000',
+                  email='livia@mail.com')
     db.session.add(donor)
     db.session.commit()
