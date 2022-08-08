@@ -1,8 +1,9 @@
 from flask import Flask, render_template, request, redirect, flash, url_for
 from flask_login import current_user, login_required
+from sqlalchemy import or_, and_
 from werkzeug.security import generate_password_hash, check_password_hash
 from app.app import app
-from app.forms import ChangePasswordForm, CreateUserForm, EditUserForm
+from app.forms import ChangePasswordForm, CreateUserForm, EditUserForm, SearchUserForm
 from app.models import Role, User
 from app.extensions import db
 from app.utils import role_required
@@ -12,8 +13,32 @@ from app.utils import role_required
 @login_required
 @role_required(Role.ADMIN)
 def list_users():
+
+    form = SearchUserForm(request.form)
+    users = []
+
+    if request.method == 'POST' and form.validate():
+
+        filters = []
+        name_criteria = form.name.data
+        role_criteria = form.role.data
+
+        if(name_criteria):
+            name_filter = or_(
+                User.first_name.ilike(f'%{name_criteria}%'),
+                User.last_name.ilike(f'%{name_criteria}%'),
+            )
+            filters.append(name_filter)
+
+        if(role_criteria):
+            role_filter = (User.role == role_criteria)
+            filters.append(role_filter)
+
+        users = User.query.filter(and_(*filters))
+        return render_template('user/list.html', users=users, form=form)
+
     users = User.query.all()
-    return render_template('user/list.html', users=users)
+    return render_template('user/list.html', users=users, form=form)
 
 
 @app.route('/users/new', methods=['POST', 'GET'])

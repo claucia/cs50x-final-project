@@ -5,6 +5,13 @@
 
 {% block content %}
 <a href="{{ url_for('create_user') }}">Create user</a>
+
+<form method="POST">
+    {{ render_field(form.name) }}
+    {{ render_field(form.role) }}
+    {{ render_field(form.submit) }}
+</form>
+
 <table>
     <thead>
         <tr>

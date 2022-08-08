@@ -79,6 +79,13 @@ class ChangePasswordForm(Form):
     submit = SubmitField('Change password')
 
 
+class SearchUserForm(Form):
+    name = StringField('First or last name')
+    role = SelectField(
+        'Role', choices=choices_with_empty_option(user_role_choices))
+    submit = SubmitField('Search')
+
+
 # Donor
 class CreateDonorForm(Form):
     first_name = StringField(
