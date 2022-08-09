@@ -1,7 +1,7 @@
 from unicodedata import numeric
 from numpy import number
 from sqlalchemy import DateTime
-from wtforms import Form, StringField, PasswordField, SelectField, SubmitField, validators
+from wtforms import Form, StringField, PasswordField, SelectField, SubmitField, validators, IntegerField
 from app.models import BloodType, Role
 
 user_role_choices = [(Role.ADMIN, 'Administrator'),
@@ -143,7 +143,7 @@ class SearchDonorForm(Form):
 
 
 # Blood request
-class BloodRequest(Form):
+class CreateBloodRequestForm(Form):
     patient_first_name = StringField(
         'Patient first name',
         [validators.DataRequired(), validators.Length(min=2, max=100)])
@@ -152,6 +152,6 @@ class BloodRequest(Form):
         [validators.DataRequired(), validators.Length(min=2, max=100)])
     abo_rh = SelectField(
         'ABO/Rh', choices=blood_type_choices)
-    how_many_units = StringField(
-        'How many units?')  # ???
+    how_many_units = IntegerField(
+        'How many units?', [validators.DataRequired()])
     submit = SubmitField('Create blood request')
