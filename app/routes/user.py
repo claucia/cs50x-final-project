@@ -22,9 +22,11 @@ def list_users():
         filters = []
         name_criteria = form.name.data
         role_criteria = form.role.data
+        print(f'Name: {name_criteria}')
 
         if(name_criteria):
             name_filter = or_(
+                # .ilike: string comparisons case insensitive
                 User.first_name.ilike(f'%{name_criteria}%'),
                 User.last_name.ilike(f'%{name_criteria}%'),
             )
@@ -34,6 +36,7 @@ def list_users():
             role_filter = (User.role == role_criteria)
             filters.append(role_filter)
 
+        # The function filter(*criterion) means you can use tuple as it's argument
         users = User.query.filter(and_(*filters))
         return render_template('user/list.html', users=users, form=form)
 
