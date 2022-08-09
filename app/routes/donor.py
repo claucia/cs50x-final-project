@@ -104,7 +104,7 @@ def edit_donor(donor_id):
     return render_template('donor/edit.html', form=form)
 
 
-@app.route('/donors/<int:donor_id>/create-donation', methods=['POST', 'GET'])
+@app.route('/donors/<int:donor_id>/create_donation', methods=['POST', 'GET'])
 @login_required
 @role_required(Role.ADMIN)
 def create_donation(donor_id):
@@ -131,4 +131,4 @@ def create_donation(donor_id):
     form.last_name.data = donor.last_name
     form.abo_rh.data = donor.abo_rh
 
-    return render_template('donor/create-donation.html', form=form)
+    return render_template('donor/create_donation.html', form=form)

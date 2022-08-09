@@ -122,4 +122,4 @@ def change_password():
         flash('Your password has been updated')
         return redirect(url_for('home'))
 
-    return render_template('user/change-password.html', form=form)
+    return render_template('user/change_password.html', form=form)
