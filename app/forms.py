@@ -1,3 +1,5 @@
+from unicodedata import numeric
+from numpy import number
 from sqlalchemy import DateTime
 from wtforms import Form, StringField, PasswordField, SelectField, SubmitField, validators
 from app.models import BloodType, Role
@@ -138,3 +140,18 @@ class SearchDonorForm(Form):
     abo_rh = SelectField(
         'ABO/Rh', choices=choices_with_empty_option(blood_type_choices))
     submit = SubmitField('Search')
+
+
+# Blood request
+class BloodRequest(Form):
+    patient_first_name = StringField(
+        'Patient first name',
+        [validators.DataRequired(), validators.Length(min=2, max=100)])
+    patient_last_name = StringField(
+        'Patient last name',
+        [validators.DataRequired(), validators.Length(min=2, max=100)])
+    abo_rh = SelectField(
+        'ABO/Rh', choices=blood_type_choices)
+    how_many_units = StringField(
+        'How many units?')  # ???
+    submit = SubmitField('Create blood request')

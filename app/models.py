@@ -65,3 +65,17 @@ class Donation(db.Model):
     expiry_date = db.Column(db.DateTime(), nullable=False)
 
     donor = relationship('Donor')
+
+
+# Blood request
+class BloodRequest(db.Model):
+    __tablename__ = 'blood-requests'
+
+    id = db.Column(db.Integer, primary_key=True)
+    patient_first_name = db.Column(db.String(100), nullable=False)
+    patient_last_name = db.Column(db.String(100), nullable=False)
+    abo_rh = db.Column(db.String(3), nullable=False)
+    how_many_units = db.Column(db.String(2), nullable=False)
+
+    # ??? user_id = db.Column(db.Integer, db.ForeignKey(User.id))
+    # ??? user = relationship('User')
