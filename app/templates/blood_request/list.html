@@ -1,0 +1,46 @@
+{% extends "layout.html" %} 
+{% from "_macros.html" import render_field %} 
+
+{% block title %}Blood request{% endblock %} 
+
+{% block content %}
+<a href="{{ url_for('create_blood_request') }}">Create new</a>
+
+<form method="POST">
+    {{ render_field(form.name) }}
+    {{ render_field(form.abo_rh) }}
+    {{ render_field(form.submit) }}
+</form>
+
+<table>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>ABO/Rh</th>
+      <th>Units</th>
+      <th>Doctor's name</th>
+      <th>Request date</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for request in requests %}
+    <tr>
+      <td>{{ request.patient_first_name }}</td>
+      <td>{{ request.patient_last_name }}</td>
+      <td>{{ request.abo_rh }}</td>
+      <td>{{ request.units }}</td>
+      <td>{{ request.user_id }}</td>
+      
+      <td>{{ request.request_date }}</td>
+
+      
+
+
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

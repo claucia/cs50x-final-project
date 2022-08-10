@@ -152,6 +152,13 @@ class CreateBloodRequestForm(Form):
         [validators.DataRequired(), validators.Length(min=2, max=100)])
     abo_rh = SelectField(
         'ABO/Rh', choices=blood_type_choices)
-    how_many_units = IntegerField(
-        'How many units?', [validators.DataRequired()])
+    units = IntegerField(
+        'Units', [validators.DataRequired()])
     submit = SubmitField('Create blood request')
+
+
+class SearchBloodRequestForm(Form):
+    name = StringField('First or last name')
+    abo_rh = SelectField(
+        'ABO/Rh', choices=choices_with_empty_option(blood_type_choices))
+    submit = SubmitField('Search')
