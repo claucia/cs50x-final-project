@@ -11,15 +11,18 @@ from sqlalchemy import or_, and_
 
 @app.route('/blood-requests', methods=['POST', 'GET'])
 @login_required
-@role_required(Role.PHYSICIAN)
 def list_blood_requests():
 
     form = SearchBloodRequestForm(request.form)
+    filters = []
     requests = []
+
+    if(current_user.is_physician()):
+        user_filter = (BloodRequest.user == current_user)
+        filters.append(user_filter)
 
     if request.method == 'POST' and form.validate():
 
-        filters = []
         name_criteria = form.name.data
         abo_rh_criteria = form.abo_rh.data
 
@@ -34,10 +37,7 @@ def list_blood_requests():
             abo_rh_filter = (BloodRequest.abo_rh == abo_rh_criteria)
             filters.append(abo_rh_filter)
 
-        requests = BloodRequest.query.filter(and_(*filters))
-        return render_template('blood_request/list.html', requests=requests, form=form)
-
-    requests = BloodRequest.query.all()
+    requests = BloodRequest.query.filter(and_(*filters))
     return render_template('blood_request/list.html', requests=requests, form=form)
 
 

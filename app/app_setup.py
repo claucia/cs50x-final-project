@@ -23,8 +23,13 @@ def should_populate_database():
 
 
 def populate_database():
-    create_admin_user()
-    create_physician_user()
+
+    create_admin_user_1()
+    create_admin_user_2()
+
+    create_physician_user_1()
+    create_physician_user_2()
+
     create_a_positive_donor()
     create_a_negative_donor()
     create_b_positive_donor()
@@ -40,26 +45,53 @@ def invalidate_http_sessions():
     session.clear()
 
 
-def create_admin_user():
+def create_admin_user_1():
     app.logger.info("Creating admin user...")
     user = User(first_name='John',
                 last_name='Doe',
-                email='admin@mail.com',
+                email='admin1@mail.com',
                 password_hash=generate_password_hash('123'),
                 role=Role.ADMIN)
     db.session.add(user)
     db.session.commit()
 
 
-def create_physician_user():
+def create_admin_user_2():
+    app.logger.info("Creating admin user...")
+    user = User(first_name='Deon',
+                last_name='Forbes',
+                email='admin2@mail.com',
+                password_hash=generate_password_hash('123'),
+                role=Role.ADMIN)
+    db.session.add(user)
+    db.session.commit()
+
+
+def create_physician_user_1():
     app.logger.info("Creating physician user...")
     user = User(first_name='Jane',
                 last_name='Doe',
-                email='physician@mail.com',
+                email='physician1@mail.com',
                 password_hash=generate_password_hash('123'),
                 role=Role.PHYSICIAN)
     db.session.add(user)
-    create_blood_request(user)
+    create_blood_request(user, 'Melissa', 'Pemberton', BloodType.A_POSITIVE, 1)
+    create_blood_request(user, 'Chaim', 'Castro', BloodType.B_NEGATIVE, 3)
+    create_blood_request(user, 'Jaeden', 'Prosser', BloodType.AB_POSITIVE, 2)
+    db.session.commit()
+
+
+def create_physician_user_2():
+    app.logger.info("Creating physician user...")
+    user = User(first_name='Rianna',
+                last_name='Gutierrez',
+                email='physician2@mail.com',
+                password_hash=generate_password_hash('123'),
+                role=Role.PHYSICIAN)
+    db.session.add(user)
+    create_blood_request(user, 'Umer', 'Swift', BloodType.O_POSITIVE, 4)
+    create_blood_request(user, 'Faris', 'Gillespie', BloodType.AB_NEGATIVE, 3)
+    create_blood_request(user, 'Dexter', 'Forbes', BloodType.B_POSITIVE, 1)
     db.session.commit()
 
 
@@ -183,13 +215,13 @@ def create_donation(donor, donation_date=datetime.now()):
     donor.last_donation_date = donation_date
 
 
-def create_blood_request(user):
+def create_blood_request(user, patient_first_name, patient_last_name, abo_rh, units, request_date=datetime.now()):
     app.logger.info(f"Creating blood request...")
-    request = BloodRequest(patient_first_name='Can',
-                           patient_last_name='Terrell',
-                           abo_rh=BloodType.B_NEGATIVE,
-                           units=1,
-                           request_date=datetime.now(),
+    request = BloodRequest(patient_first_name=patient_first_name,
+                           patient_last_name=patient_last_name,
+                           abo_rh=abo_rh,
+                           units=units,
+                           request_date=request_date,
                            user=user)
 
     db.session.add(request)

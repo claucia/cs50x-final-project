@@ -4,7 +4,10 @@
 {% block title %}Blood request{% endblock %} 
 
 {% block content %}
+
+{% if current_user.is_physician() %}
 <a href="{{ url_for('create_blood_request') }}">Create new</a>
+{% endif %}
 
 <form method="POST">
     {{ render_field(form.name) }}
