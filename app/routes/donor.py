@@ -55,6 +55,8 @@ def create_donor():
             return render_template('donor/create.html', form=form)
 
         # Processo de instaciar uma classe
+        # donor -> object of Donor
+        # Donor(...) -> chama a construdor da class Donor para criar um objeto/instancia
         donor = Donor(first_name=form.first_name.data,
                       last_name=form.last_name.data,
                       abo_rh=form.abo_rh.data,

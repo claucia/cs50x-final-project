@@ -4,4 +4,14 @@
 
 {% block content %}
 <p>Welcome!</p>
+
+<div>
+  A+:
+  {{ blood_types_and_amounts['A+'] }}
+</div>
+
+<div>
+  Pending:
+  {{ blood_request_status_and_amounts['Pending'] }}
+</div>
 {% endblock %}

@@ -1,7 +1,7 @@
 from flask import session
 from werkzeug.security import generate_password_hash
 from datetime import datetime, timedelta
-from app.models import BLOOD_BAG_EXPIRY_TIME_IN_DAYS, BloodRequest, BloodType, Role, User, Donor, Donation
+from app.models import BLOOD_BAG_EXPIRY_TIME_IN_DAYS, BloodRequest, BloodRequestStatus, BloodType, Role, User, Donor, Donation
 from app.extensions import db
 from app.app import app
 
@@ -222,6 +222,7 @@ def create_blood_request(user, patient_first_name, patient_last_name, abo_rh, un
                            abo_rh=abo_rh,
                            units=units,
                            request_date=request_date,
+                           status=BloodRequestStatus.PENDING,
                            user=user)
 
     db.session.add(request)

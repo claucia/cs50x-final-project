@@ -5,7 +5,7 @@ from flask_login import login_required, current_user
 from app.utils import role_required
 from app.forms import CreateBloodRequestForm, SearchBloodRequestForm
 from app.extensions import db
-from app.models import Role, BloodRequest
+from app.models import BloodRequestStatus, Role, BloodRequest
 from sqlalchemy import or_, and_
 
 
@@ -55,6 +55,7 @@ def create_blood_request():
                                      abo_rh=form.abo_rh.data,
                                      units=form.units.data,
                                      request_date=request_date,
+                                     status=BloodRequestStatus.PENDING,
                                      user=current_user)
 
         db.session.add(blood_request)

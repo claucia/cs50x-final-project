@@ -43,6 +43,13 @@ class BloodType(object):
     O_NEGATIVE = 'O-'
 
 
+class BloodRequestStatus(object):
+    __slots__ = ()
+    PENDING = 'Pending'
+    APROVED = 'Aproved'
+    REJECTED = 'Rejected'
+
+
 class Donor(db.Model):
     __tablename__ = 'donors'
 
@@ -77,6 +84,7 @@ class BloodRequest(db.Model):
     abo_rh = db.Column(db.String(3), nullable=False)
     units = db.Column(db.Integer, nullable=False)
     request_date = db.Column(db.DateTime(), nullable=False)
+    status = db.Column(db.String(20), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey(User.id), nullable=False)
 
     user = relationship('User')
