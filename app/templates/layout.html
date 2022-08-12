@@ -22,13 +22,14 @@
                 <ul>
                     <li><a href="{{ url_for('list_users') }}">Users</a></li>
                     <li><a href="{{ url_for('list_donors') }}">Donors</a></li>
-                    <li><a href="{{ url_for('list_blood_requests') }}">Blood requests</a></li>
                 </ul>
             </nav>
             {% endif %}
 
             {% if current_user.is_physician() %}
-            <nav class="navigation"></nav>
+            <nav class="navigation">
+                 <li><a href="{{ url_for('list_blood_requests') }}">Blood requests</a></li>
+            </nav>
             {% endif %}
 
             <div class="authenticated-user">

@@ -1,7 +1,7 @@
 from flask import session
 from werkzeug.security import generate_password_hash
 from datetime import datetime, timedelta
-from app.models import BLOOD_BAG_EXPIRY_TIME_IN_DAYS, BloodType, Role, User, Donor, Donation
+from app.models import BLOOD_BAG_EXPIRY_TIME_IN_DAYS, BloodRequest, BloodType, Role, User, Donor, Donation
 from app.extensions import db
 from app.app import app
 
@@ -59,6 +59,7 @@ def create_physician_user():
                 password_hash=generate_password_hash('123'),
                 role=Role.PHYSICIAN)
     db.session.add(user)
+    create_blood_request(user)
     db.session.commit()
 
 
@@ -180,6 +181,18 @@ def create_donation(donor, donation_date=datetime.now()):
                         expiry_date=donation_date + timedelta(days=BLOOD_BAG_EXPIRY_TIME_IN_DAYS))
     db.session.add(donation)
     donor.last_donation_date = donation_date
+
+
+def create_blood_request(user):
+    app.logger.info(f"Creating blood request...")
+    request = BloodRequest(patient_first_name='Can',
+                           patient_last_name='Terrell',
+                           abo_rh=BloodType.B_NEGATIVE,
+                           units=1,
+                           request_date=datetime.now(),
+                           user=user)
+
+    db.session.add(request)
 
 
 def datetime_from_string(datetime_as_string):

@@ -69,14 +69,14 @@ class Donation(db.Model):
 
 # Blood request
 class BloodRequest(db.Model):
-    __tablename__ = 'blood-requests'
+    __tablename__ = 'blood_requests'
 
     id = db.Column(db.Integer, primary_key=True)
     patient_first_name = db.Column(db.String(100), nullable=False)
     patient_last_name = db.Column(db.String(100), nullable=False)
     abo_rh = db.Column(db.String(3), nullable=False)
-    units = db.Column(db.String(2), nullable=False)
-    request_date = db.Column(db.DateTime(), nullable=True)
-    user_id = db.Column(db.Integer, db.ForeignKey(User.id))
+    units = db.Column(db.Integer, nullable=False)
+    request_date = db.Column(db.DateTime(), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey(User.id), nullable=False)
 
     user = relationship('User')

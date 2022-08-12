@@ -1,7 +1,7 @@
 from datetime import datetime
 from flask import Flask, render_template, request, redirect, flash, url_for
 from app.app import app
-from flask_login import login_required
+from flask_login import login_required, current_user
 from app.utils import role_required
 from app.forms import CreateBloodRequestForm, SearchBloodRequestForm
 from app.extensions import db
@@ -11,7 +11,7 @@ from sqlalchemy import or_, and_
 
 @app.route('/blood-requests', methods=['POST', 'GET'])
 @login_required
-@role_required(Role.ADMIN)
+@role_required(Role.PHYSICIAN)
 def list_blood_requests():
 
     form = SearchBloodRequestForm(request.form)
@@ -43,7 +43,7 @@ def list_blood_requests():
 
 @app.route('/blood-requests/new', methods=['POST', 'GET'])
 @login_required
-@role_required(Role.ADMIN)
+@role_required(Role.PHYSICIAN)
 def create_blood_request():
 
     form = CreateBloodRequestForm(request.form)
@@ -54,7 +54,8 @@ def create_blood_request():
                                      patient_last_name=form.patient_last_name.data,
                                      abo_rh=form.abo_rh.data,
                                      units=form.units.data,
-                                     request_date=request_date)
+                                     request_date=request_date,
+                                     user=current_user)
 
         db.session.add(blood_request)
         db.session.commit()
