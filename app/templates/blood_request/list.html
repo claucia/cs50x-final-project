@@ -36,7 +36,7 @@
       <td>{{ request.abo_rh }}</td>
       <td>{{ request.units }}</td>
       <td>{{ request.user.first_name }}</td>      
-      <td>{{ request.request_date }}</td>
+      <td>{{ request.request_date.strftime('%Y-%m-%d') }}</td>
     </tr>
     {% endfor %}
   </tbody>

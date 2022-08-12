@@ -32,7 +32,7 @@
       <td>{{ donor.abo_rh }}</td>
       <td>{{ donor.phone_number }}</td>
       <td>{{ donor.email }}</td>
-      <td>{{ donor.last_donation_date }}</td>
+      <td>{{ donor.last_donation_date.strftime('%Y-%m-%d') }}</td>
 
       <td><a href="{{ url_for('edit_donor', donor_id=donor.id) }}">Edit</a></td>
       <td><a href="{{ url_for('create_donation', donor_id=donor.id)}}">Donate</a></td>      

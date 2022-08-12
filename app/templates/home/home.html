@@ -9,9 +9,45 @@
   A+:
   {{ blood_types_and_amounts['A+'] }}
 </div>
+<div>
+  B+:
+  {{ blood_types_and_amounts['B+'] }}
+</div>
+<div>
+  AB+:
+  {{ blood_types_and_amounts['AB+'] }}
+</div>
+<div>
+  O+:
+  {{ blood_types_and_amounts['O+'] }}
+</div>
+<div>
+  A-:
+  {{ blood_types_and_amounts['A-'] }}
+</div>
+<div>
+  B-:
+  {{ blood_types_and_amounts['B-'] }}
+</div>
+<div>
+  AB-:
+  {{ blood_types_and_amounts['AB-'] }}
+</div>
+<div>
+  O-:
+  {{ blood_types_and_amounts['O-'] }}
+</div>
 
 <div>
   Pending:
-  {{ blood_request_status_and_amounts['Pending'] }}
+  {{ blood_request_status_and_amounts['Pending'] or 0 }}
+</div>
+<div>
+  Aproved:
+  {{ blood_request_status_and_amounts['Aproved'] or 0 }}
+</div>
+<div>
+  Rejected:
+  {{ blood_request_status_and_amounts['Rejected'] or 0 }}
 </div>
 {% endblock %}
