@@ -32,7 +32,7 @@ When working with static content, such as CSS files, it's nice to have browser l
 $ python live_refresh.py
 ```
 
-And the application will be available at `http://127.0.0.1:5500`.
+And the application will be available at `http://127.0.0.1:5000`.
 
 # Lessons learned
 
