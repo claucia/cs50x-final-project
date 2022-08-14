@@ -30,7 +30,7 @@ color:var(--blue);
   flex-direction: column;
 }
 
-.authenticated-user>.authenticated-user-actions{
-  display: flex;
-  margin-right: 1.5rem;
+.authenticated-user>.authenticated-user-actions>.logout{
+  font-size: 1.5rem;
+  margin-left: 1rem;
 }

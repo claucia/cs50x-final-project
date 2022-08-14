@@ -1,0 +1,33 @@
+main>.content{
+  /* background-color: aqua; */
+}
+
+main>.content>.stock{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid red;
+}
+
+main>.content>.stock>.positive,
+main>.content>.stock>.negative{
+  border: 1px solid green;
+  display: flex;
+  gap: 1rem;
+}
+
+main>.content>.stock>.positive>.a-positive,
+main>.content>.stock>.positive>.b-positive,
+main>.content>.stock>.positive>.ab-positive,
+main>.content>.stock>.positive>.o-positive{
+  padding:2rem;
+  border: 1px solid pink;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+
