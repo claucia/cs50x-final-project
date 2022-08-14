@@ -1,86 +1,82 @@
 {% extends "layout.html" %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Blood available{% endblock %}
 
 {% block content %}
-<p>Blood available</p>
 
-<div class="stock">
-  <div class="positive">
 
-    {% with item = blood_stock['A+'] or None %}
-    <div class="a-positive {{ item['level'] }}">
-      <span>A+</span>
-      <span>{{ item['amount'] or 0 }}</span>
-    </div>
-    {% endwith %}
+<div class="stock">  
 
-    {% with item = blood_stock['B+'] or None %}
-    <div class="b-positive {{ item['level'] }}">
-      <span>B+</span>
-      <span>{{ item['amount'] or 0 }}</span>
-    </div>
-    {% endwith %}
-
-    {% with item = blood_stock['AB+'] or None %}
-    <div class="ab-positive {{ item['level'] }}">
-      <span>AB+</span>
-      <span>{{ item['amount'] or 0 }}</span>
-    </div>
-    {% endwith %}
-
-    {% with item = blood_stock['O+'] or None %}
-    <div class="o-positive {{ item['level'] }}">
-      <span>O+</span>
-      <span>{{ item['amount'] or 0 }}</span>
-    </div>
-    {% endwith %}
-
+  {% with item = blood_stock['A+'] or None %}
+  <div class="a-positive {{ item['level'] }}">
+    <span>A+</span>
+    <span>{{ item['amount'] or 0 }}</span>
   </div>
+  {% endwith %}
 
-  <div class="negative">
-  
-    {% with item = blood_stock['A-'] or None %}
-    <div class="a-negative {{ item['level'] }}">
-      <span>A-</span>
-      <span>{{ item['amount'] or 0 }}</span>
-    </div>
-    {% endwith %}
+  {% with item = blood_stock['B+'] or None %}
+  <div class="b-positive {{ item['level'] }}">
+    <span>B+</span>
+    <span>{{ item['amount'] or 0 }}</span>
+  </div>
+  {% endwith %}
 
-    {% with item = blood_stock['B-'] or None %}
-    <div class="b-negative {{ item['level'] }}">
-      <span>B-</span>
-      <span>{{ item['amount'] or 0 }}</span>
-    </div>
-    {% endwith %}
+  {% with item = blood_stock['AB+'] or None %}
+  <div class="ab-positive {{ item['level'] }}">
+    <span>AB+</span>
+    <span>{{ item['amount'] or 0 }}</span>
+  </div>
+  {% endwith %}
 
-    {% with item = blood_stock['AB-'] or None %}
-    <div class="ab-negative {{ item['level'] }}">
-      <span>AB-</span>
-      <span>{{ item['amount'] or 0 }}</span>
-    </div>
-    {% endwith %}
+  {% with item = blood_stock['O+'] or None %}
+  <div class="o-positive {{ item['level'] }}">
+    <span>O+</span>
+    <span>{{ item['amount'] or 0 }}</span>
+  </div>
+  {% endwith %}
 
-    {% with item = blood_stock['O-'] or None %}
-    <div class="o-negative {{ item['level'] }}">
-      <span>O-</span>
-      <span>{{ item['amount'] or 0 }}</span>
-    </div>
-    {% endwith %}
+  {% with item = blood_stock['A-'] or None %}
+  <div class="a-negative {{ item['level'] }}">
+    <span>A-</span>
+    <span>{{ item['amount'] or 0 }}</span>
+  </div>
+  {% endwith %}
 
+  {% with item = blood_stock['B-'] or None %}
+  <div class="b-negative {{ item['level'] }}">
+    <span>B-</span>
+    <span>{{ item['amount'] or 0 }}</span>
+  </div>
+  {% endwith %}
+
+  {% with item = blood_stock['AB-'] or None %}
+  <div class="ab-negative {{ item['level'] }}">
+    <span>AB-</span>
+    <span>{{ item['amount'] or 0 }}</span>
+  </div>
+  {% endwith %}
+
+  {% with item = blood_stock['O-'] or None %}
+  <div class="o-negative {{ item['level'] }}">
+    <span>O-</span>
+    <span>{{ item['amount'] or 0 }}</span>
+  </div>
+  {% endwith %}
+</div>
+
+<div class="dashboard">
+  <div class="pending">
+    Pending:
+    {{ blood_request_status_and_amounts['Pending'] or 0 }}
+  </div>
+  <div class="aproved">
+    Aproved:
+    {{ blood_request_status_and_amounts['Aproved'] or 0 }}
+  </div>
+  <div class="rejected">
+    Rejected:
+    {{ blood_request_status_and_amounts['Rejected'] or 0 }}
   </div>
 </div>
 
-<div>
-  Pending:
-  {{ blood_request_status_and_amounts['Pending'] or 0 }}
-</div>
-<div>
-  Aproved:
-  {{ blood_request_status_and_amounts['Aproved'] or 0 }}
-</div>
-<div>
-  Rejected:
-  {{ blood_request_status_and_amounts['Rejected'] or 0 }}
-</div>
 {% endblock %}
