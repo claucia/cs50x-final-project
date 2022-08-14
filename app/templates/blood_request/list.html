@@ -25,7 +25,7 @@
       <th>Doctor's name</th>
       <th>Request date</th>
       <th>Status</th>
-      <th>Action</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -35,8 +35,9 @@
       <td>{{ request.patient_last_name }}</td>
       <td>{{ request.abo_rh }}</td>
       <td>{{ request.units }}</td>
-      <td>{{ request.user.first_name }}</td>      
+      <td>{{ request.user.first_name + ' ' + request.user.last_name }}</td>      
       <td>{{ request.request_date.strftime('%Y-%m-%d') }}</td>
+      <td>{{ request.status }}</td>
     </tr>
     {% endfor %}
   </tbody>
