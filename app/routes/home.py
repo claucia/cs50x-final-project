@@ -14,7 +14,24 @@ def home():
     blood_types_and_amounts = db.session.query(Donation.abo_rh, func.count(
         Donation.abo_rh)).group_by(Donation.abo_rh).all()
 
+    blood_stock = {}
+    for item in blood_types_and_amounts:
+        abo_rh = item[0]
+        amount = item[1]
+        blood_stock[abo_rh] = {
+            'amount': amount,
+            'level': calculate_level(amount) 
+        }
+    
     blood_request_status_and_amounts = db.session.query(BloodRequest.status, func.count(
         BloodRequest.status)).group_by(BloodRequest.status).all()
 
-    return render_template('home/home.html', blood_types_and_amounts=dict(blood_types_and_amounts), blood_request_status_and_amounts=dict(blood_request_status_and_amounts))
+    return render_template('home/home.html', blood_stock=blood_stock, blood_request_status_and_amounts=dict(blood_request_status_and_amounts))
+
+
+def calculate_level(amount):
+    if (amount >= 10):
+        return 'high'
+    if (amount >= 5):
+        return 'medium'
+    return 'low'

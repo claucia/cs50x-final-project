@@ -3,39 +3,72 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<p>Welcome!</p>
+<p>Blood available</p>
 
-<div>
-  A+:
-  {{ blood_types_and_amounts['A+'] }}
-</div>
-<div>
-  B+:
-  {{ blood_types_and_amounts['B+'] }}
-</div>
-<div>
-  AB+:
-  {{ blood_types_and_amounts['AB+'] }}
-</div>
-<div>
-  O+:
-  {{ blood_types_and_amounts['O+'] }}
-</div>
-<div>
-  A-:
-  {{ blood_types_and_amounts['A-'] }}
-</div>
-<div>
-  B-:
-  {{ blood_types_and_amounts['B-'] }}
-</div>
-<div>
-  AB-:
-  {{ blood_types_and_amounts['AB-'] }}
-</div>
-<div>
-  O-:
-  {{ blood_types_and_amounts['O-'] }}
+<div class="stock">
+  <div class="positive">
+
+    {% with item = blood_stock['A+'] or None %}
+    <div class="a-positive {{ item['level'] }}">
+      <span>A+</span>
+      <span>{{ item['amount'] or 0 }}</span>
+    </div>
+    {% endwith %}
+
+    {% with item = blood_stock['B+'] or None %}
+    <div class="b-positive {{ item['level'] }}">
+      <span>B+</span>
+      <span>{{ item['amount'] or 0 }}</span>
+    </div>
+    {% endwith %}
+
+    {% with item = blood_stock['AB+'] or None %}
+    <div class="ab-positive {{ item['level'] }}">
+      <span>AB+</span>
+      <span>{{ item['amount'] or 0 }}</span>
+    </div>
+    {% endwith %}
+
+    {% with item = blood_stock['O+'] or None %}
+    <div class="o-positive {{ item['level'] }}">
+      <span>O+</span>
+      <span>{{ item['amount'] or 0 }}</span>
+    </div>
+    {% endwith %}
+
+  </div>
+
+  <div class="negative">
+  
+    {% with item = blood_stock['A-'] or None %}
+    <div class="a-negative {{ item['level'] }}">
+      <span>A-</span>
+      <span>{{ item['amount'] or 0 }}</span>
+    </div>
+    {% endwith %}
+
+    {% with item = blood_stock['B-'] or None %}
+    <div class="b-negative {{ item['level'] }}">
+      <span>B-</span>
+      <span>{{ item['amount'] or 0 }}</span>
+    </div>
+    {% endwith %}
+
+    {% with item = blood_stock['AB-'] or None %}
+    <div class="ab-negative {{ item['level'] }}">
+      <span>AB-</span>
+      <span>{{ item['amount'] or 0 }}</span>
+    </div>
+    {% endwith %}
+
+    {% with item = blood_stock['O-'] or None %}
+    <div class="o-negative {{ item['level'] }}">
+      <span>O-</span>
+      <span>{{ item['amount'] or 0 }}</span>
+    </div>
+    {% endwith %}
+
+  </div>
 </div>
 
 <div>
