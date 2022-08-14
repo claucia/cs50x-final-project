@@ -8,6 +8,7 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SQLALCHEMY_ECHO'] = True
+    app.config['TEMPLATES_AUTO_RELOAD'] = True
     app.secret_key = 'xyz'
     register_extensions(app)
     return app

@@ -24,6 +24,16 @@ $ FLASK_APP=app/app.py FLASK_ENV=development flask run
 
 The application will be available at `http://127.0.0.1:5000`.
 
+## Live refresh
+
+When working with static content, such as CSS files, it's nice to have browser live refresh for quick development cycles. To run the application, use:
+
+```shell
+$ python live_refresh.py
+```
+
+And the application will be available at `http://127.0.0.1:5500`.
+
 # Lessons learned
 
 Defining a route in Flask, we can specify parts of it that will be converted into Python variables and passed to the view function.
