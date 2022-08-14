@@ -139,7 +139,6 @@ class SearchDonorForm(Form):
     name = StringField('First or last name')
     abo_rh = SelectField(
         'ABO/Rh', choices=choices_with_empty_option(blood_type_choices))
-    submit = SubmitField('Search')
 
 
 # Blood request

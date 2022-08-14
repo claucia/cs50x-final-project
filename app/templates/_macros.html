@@ -1,3 +1,9 @@
+{% macro render_button(text) %}
+  <div class="field">
+    <button>{{ text }}</button>
+  </div>
+{% endmacro %}
+
 
 {% macro render_field(field) %}
   <div class="field">
@@ -7,6 +13,7 @@
     {% endif %}
     
     {{ field(**kwargs)|safe }}
+
     {% if field.errors %}
       <ul class=errors>
       {% for error in field.errors %}

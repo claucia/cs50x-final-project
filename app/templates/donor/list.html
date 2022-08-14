@@ -1,15 +1,15 @@
 {% extends "layout.html" %} 
-{% from "_macros.html" import render_field %} 
+{% from "_macros.html" import render_field, render_button %} 
 
 {% block title %}Donors{% endblock %} 
 
 {% block content %}
 <a href="{{ url_for('create_donor') }}">Create new</a>
 
-<form method="POST">
+<form method="GET">
     {{ render_field(form.name) }}
     {{ render_field(form.abo_rh) }}
-    {{ render_field(form.submit) }}
+    {{ render_button('Search') }}
 </form>
 
 <table>
@@ -32,7 +32,7 @@
       <td>{{ donor.abo_rh }}</td>
       <td>{{ donor.phone_number }}</td>
       <td>{{ donor.email }}</td>
-      <td>{{ donor.last_donation_date.strftime('%Y-%m-%d') }}</td>
+      <td>{{ donor.last_donation_date.strftime('%Y-%m-%d') if donor.last_donation_date is not none else 'None' }}</td>
 
       <td><a href="{{ url_for('edit_donor', donor_id=donor.id) }}">Edit</a></td>
       <td><a href="{{ url_for('create_donation', donor_id=donor.id)}}">Donate</a></td>      

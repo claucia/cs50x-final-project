@@ -9,35 +9,30 @@ from app.extensions import db
 from app.utils import role_required
 
 
-@app.route('/donors', methods=['POST', 'GET'])
+@app.route('/donors', methods=['GET'])
 @login_required
 @role_required(Role.ADMIN)
 def list_donors():
 
-    form = SearchDonorForm(request.form)
+    form = SearchDonorForm(request.args)
     donors = []
 
-    if request.method == 'POST' and form.validate():
+    filters = []
+    name_criteria = form.name.data
+    abo_rh_criteria = form.abo_rh.data
 
-        filters = []
-        name_criteria = form.name.data
-        abo_rh_criteria = form.abo_rh.data
+    if (name_criteria):
+        name_filter = or_(
+            Donor.first_name.ilike(f'%{name_criteria}%'),
+            Donor.last_name.ilike(f'%{name_criteria}%')
+        )
+        filters.append(name_filter)
 
-        if (name_criteria):
-            name_filter = or_(
-                Donor.first_name.ilike(f'%{name_criteria}%'),
-                Donor.last_name.ilike(f'%{name_criteria}%')
-            )
-            filters.append(name_filter)
+    if (abo_rh_criteria):
+        abo_rh_filter = (Donor.abo_rh == abo_rh_criteria)
+        filters.append(abo_rh_filter)
 
-        if (abo_rh_criteria):
-            abo_rh_filter = (Donor.abo_rh == abo_rh_criteria)
-            filters.append(abo_rh_filter)
-
-        donors = Donor.query.filter(and_(*filters))
-        return render_template('donor/list.html', donors=donors, form=form)
-
-    donors = Donor.query.all()
+    donors = Donor.query.filter(and_(*filters))
     return render_template('donor/list.html', donors=donors, form=form)
 
 
