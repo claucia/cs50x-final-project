@@ -1,0 +1,36 @@
+header>.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 0;
+}
+
+header>.content>.logo>a{
+  font-size: 4rem;
+  color:var(--red);
+}
+
+header>.content>.logo>a:hover{
+color:var(--blue);
+}
+
+.navigation ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+}
+
+.navigation ul li {
+  margin-right: 1.5rem;
+}
+
+.authenticated-user {
+  display: flex;
+  flex-direction: column;
+}
+
+.authenticated-user>.authenticated-user-actions{
+  display: flex;
+  margin-right: 1.5rem;
+}

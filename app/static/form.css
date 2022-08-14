@@ -1,0 +1,17 @@
+.field {
+  width: 100%;
+  margin: .5rem 0;
+}
+
+label {
+  display: block;
+  margin-bottom: 2px;
+}
+
+input,
+select {
+  width: 100%;
+  outline: none;
+  margin: 0;
+  padding: .5rem;
+}

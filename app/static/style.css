@@ -1,9 +1,45 @@
-* {
+:root {
+    /* Colors */
+    --red: #fd666b;
+    --blue: #515b73;
+    --gray: #d6d6d6;
+    --black: #000;
+    --background: #f6f5fa;
+
+    /* Font */
+
+}
+
+*,
+*::before,
+*::after {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     box-sizing: border-box;
 }
 
-html, body {
+* {
+    margin: 0;
+    padding: 0;
+    /* Para estilizar os títulos sem a influencia de h1,h2,... reset everything so we can build this things back in */
+    /* font: inherit; */
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--blue);
+}
+
+a:hover {
+    color: var(--red);
+}
+
+html,
+body {
     margin: 0;
     height: 100%;
 }
@@ -12,24 +48,12 @@ body {
     display: grid;
     grid-gap: 10px;
     grid-template-columns: 1fr;
-    grid-template-areas: "header" "main" "footer";
-    grid-template-rows: 4rem 1fr 80px;
+    grid-template-areas: "header""main""footer";
+    grid-template-rows: 7rem 1fr 80px;
 }
 
 header {
-    background-color: #ddd;
     grid-area: header;
-}
-
-header > .content {
-    display: flex;
-    justify-content: space-between;
-}
-
-.navigation ul {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
 }
 
 main {
@@ -45,35 +69,4 @@ footer {
     padding: 1rem 0;
     max-width: 800px;
     margin: 0 auto;
-}
-
-
-/* Tables */
-
-table {
-    width: 100%;
-}
-
-th {
-    text-align: left;
-}
-
-
-/* Forms */
-
-.field {
-    width: 100%;
-    margin: .5rem 0;
-}
-
-label {
-    display: block;
-    margin-bottom: 2px;
-}
-
-input, select {
-    width: 100%;
-    outline: none;
-    margin: 0;
-    padding: .5rem;
 }
