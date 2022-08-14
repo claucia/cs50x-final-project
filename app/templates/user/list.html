@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% from "_macros.html" import render_field %}
+{% from "_macros.html" import render_field, render_button %}
 
 {% block title %}Users{% endblock %}
 
@@ -9,7 +9,7 @@
 <form method="POST">
     {{ render_field(form.name) }}
     {{ render_field(form.role) }}
-    {{ render_field(form.submit) }}
+    {{ render_button('Search') }}
 </form>
 
 <table>

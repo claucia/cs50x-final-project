@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% from "_macros.html" import render_field %}
+{% from "_macros.html" import render_field, render_button %}
 
 {% block title %}Login{% endblock %}
 
@@ -7,6 +7,6 @@
 <form method="POST">
     {{ render_field(form.email) }}
     {{ render_field(form.password) }}
-    {{ render_field(form.submit) }}
+    {{ render_button('Login') }}
 </form>
 {% endblock %}

@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% from "_macros.html" import render_field %}
+{% from "_macros.html" import render_field, render_button %}
 
 {% block title %}Create user{% endblock %}
 
@@ -10,7 +10,7 @@
     {{ render_field(form.email) }}
     {{ render_field(form.password) }}
     {{ render_field(form.role) }}
-    {{ render_field(form.submit) }}
+    {{ render_button('Create user') }}
     <a href="{{ url_for('list_users') }}">Cancel</a>
 </form>
 {% endblock %}

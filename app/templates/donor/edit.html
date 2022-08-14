@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% from "_macros.html" import render_field %}
+{% from "_macros.html" import render_field, render_button %}
 
 {% block title %}Edit donor{% endblock %}
 
@@ -10,7 +10,7 @@
     {{ render_field(form.abo_rh) }}
     {{ render_field(form.phone_number) }}
     {{ render_field(form.email) }}
-    {{ render_field(form.submit) }}
+    {{ render_button('Update donor') }}
     <a href="{{ url_for('list_donors') }}">Cancel</a>
 </form>
 {% endblock %}

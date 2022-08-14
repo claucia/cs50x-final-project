@@ -40,7 +40,6 @@ class CreateUserForm(Form):
         'Role',
         [validators.DataRequired()],
         choices=user_role_choices)
-    submit = SubmitField('Create user')
 
 
 class EditUserForm(Form):
@@ -58,7 +57,6 @@ class EditUserForm(Form):
         'Role',
         [validators.DataRequired()],
         choices=user_role_choices)
-    submit = SubmitField('Update user')
 
 
 class LoginForm(Form):
@@ -68,7 +66,6 @@ class LoginForm(Form):
     password = PasswordField(
         'Password',
         [validators.DataRequired()])
-    submit = SubmitField('Login')
 
 
 class ChangePasswordForm(Form):
@@ -78,14 +75,12 @@ class ChangePasswordForm(Form):
     new_password = PasswordField(
         'New password',
         [validators.DataRequired()])
-    submit = SubmitField('Change password')
 
 
 class SearchUserForm(Form):
     name = StringField('First or last name')
     role = SelectField(
         'Role', choices=choices_with_empty_option(user_role_choices))
-    submit = SubmitField('Search')
 
 
 # Donor
@@ -104,7 +99,6 @@ class CreateDonorForm(Form):
     email = StringField(
         'E-mail',
         [validators.DataRequired(), validators.Length(min=6, max=100)])
-    submit = SubmitField('Create donor')
 
 
 class EditDonorForm(Form):
@@ -122,7 +116,6 @@ class EditDonorForm(Form):
     email = StringField(
         'E-mail',
         [validators.DataRequired(), validators.Length(min=6, max=100)])
-    submit = SubmitField('Update donor')
 
 
 class CreateDonationForm(Form):
@@ -132,7 +125,6 @@ class CreateDonationForm(Form):
         'Last name', render_kw={'readonly': True})
     abo_rh = StringField(
         'ABO/Rh', render_kw={'readonly': True})
-    submit = SubmitField('Register donation')
 
 
 class SearchDonorForm(Form):
@@ -153,11 +145,10 @@ class CreateBloodRequestForm(Form):
         'ABO/Rh', choices=blood_type_choices)
     units = IntegerField(
         'Units', [validators.DataRequired()])
-    submit = SubmitField('Create blood request')
 
 
 class SearchBloodRequestForm(Form):
     name = StringField('First or last name')
     abo_rh = SelectField(
         'ABO/Rh', choices=choices_with_empty_option(blood_type_choices))
-    submit = SubmitField('Search')
+
