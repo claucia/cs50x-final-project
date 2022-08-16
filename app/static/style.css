@@ -2,9 +2,11 @@
     /* Colors */
     --red: #fd666b;
     --blue: #515b73;
-    --gray: #d6d6d6;
+    --text: #3b5591; /*Change color for a tags*/
+    --light-gray: #eaeaea; /*Read only*/
+    --gray: #f8f5f5;
     --black: #000;
-    --background: #f6f5fa;
+    --white: #f6f5fa;
 
     /* Font */
 
@@ -31,17 +33,22 @@ ul {
 a {
     cursor: pointer;
     text-decoration: none;
-    color: var(--blue);
+    color: var(--text);
 }
 
 a:hover {
     color: var(--red);
 }
 
+h4 {
+    padding-bottom: 1rem;
+}
+
 html,
 body {
     margin: 0;
     height: 100%;
+    color: var(--blue);
 }
 
 body {
@@ -67,6 +74,6 @@ footer {
 
 .content {
     padding: 1rem 0;
-    max-width: 1080px;
+    max-width: 1000px;
     margin: 0 auto;
 }

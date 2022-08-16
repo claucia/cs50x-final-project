@@ -7,6 +7,7 @@
 <a href="{{ url_for('create_user') }}">Create user</a>
 
 <form method="POST">
+    <h4>Search user</h4>
     {{ render_field(form.name) }}
     {{ render_field(form.role) }}
     {{ render_button('Search') }}
