@@ -10,6 +10,6 @@
     {{ render_field(form.abo_rh) }}
     {{ render_field(form.units) }}
     {{ render_button('Create blood request') }}
-    <a href="{{ url_for('create_blood_request') }}">Cancel</a>
+    <a class="cancel-button" href="{{ url_for('create_blood_request') }}">Cancel</a>
 </form>
 {% endblock %}

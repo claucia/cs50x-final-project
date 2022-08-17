@@ -11,6 +11,6 @@
     {{ render_field(form.password) }}
     {{ render_field(form.role) }}
     {{ render_button('Create') }}
-    <a href="{{ url_for('list_users') }}">Cancel</a>
+    <a class="cancel-button" href="{{ url_for('list_users') }}">Cancel</a>
 </form>
 {% endblock %}

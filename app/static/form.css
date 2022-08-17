@@ -1,22 +1,22 @@
 form{
-  max-width: 40%;
-  display: block;
-  margin: 2rem 16rem;
-  padding: 2rem 2rem 0 2rem;
-  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
-  border-radius: 0.2rem;
-  
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-gap: 1rem;
+  align-items: center;
+  margin: 2rem 0;
 }
 
 .field {
   width: 100%;
   margin: .5rem 0;
+  
 }
 
 label {
   display: block;
   margin-bottom: 2px;
-  color: var(--red)
+  color: var(--blue)
 }
 
 input,
@@ -28,21 +28,24 @@ select {
   color: var(--blue);
   border: 1px solid var(--blue);
   border-radius: 0.2rem;
-  
 }
 
-input:focus{
+select{
+  padding: 0.6rem;
+}
+
+/* input:focus{
   background-color: var(--gray);
-}
+} */
 
-button{
+button, .cancel-button{
   padding:0.5rem 1rem;
-  margin: 2rem 7.9rem;
   color: var(--white);
   border: 1px solid var(--blue);
   border-radius: 0.4rem;
   background-color: var(--blue);
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+  margin-top: 1.5rem;
 }
 
 button:hover{

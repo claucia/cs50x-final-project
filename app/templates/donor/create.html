@@ -11,6 +11,6 @@
     {{ render_field(form.phone_number) }}
     {{ render_field(form.email) }}
     {{ render_button('Create') }}
-    <button><a href="{{ url_for('list_donors') }}">Cancel</a></button>
+    <a class="cancel-button" href="{{ url_for('list_donors') }}">Cancel</a>
 </form>
 {% endblock %}

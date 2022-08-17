@@ -2,11 +2,12 @@
     /* Colors */
     --red: #fd666b;
     --blue: #515b73;
-    --text: #3b5591; /*Change color for a tags*/
-    --light-gray: #eaeaea; /*Read only*/
+    --link: #3b5591; /*Change color for a tags*/
+    --light-gray: #fff8f8; /*Read only*/
     --gray: #f8f5f5;
     --black: #000;
     --white: #f6f5fa;
+    --background: #fff9f9;
 
     /* Font */
 
@@ -33,15 +34,11 @@ ul {
 a {
     cursor: pointer;
     text-decoration: none;
-    color: var(--text);
+    color: var(--link);
 }
 
 a:hover {
     color: var(--red);
-}
-
-h4 {
-    padding-bottom: 1rem;
 }
 
 html,
@@ -49,6 +46,7 @@ body {
     margin: 0;
     height: 100%;
     color: var(--blue);
+    background-color: var(--background);
 }
 
 body {
