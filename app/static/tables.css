@@ -4,4 +4,20 @@ table {
 
 th {
   text-align: left;
+  font-size: 1.1rem;
+  margin-right: 1.5rem;
+  padding: 1rem 1rem 1rem 0;
+}
+
+thead:last-child{
+  text-align: center;
+  color: red;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: var(--gray);
+}
+
+td {
+  padding: 0.4rem 1rem 0.4rem 0;
 }

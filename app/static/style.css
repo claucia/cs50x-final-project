@@ -4,7 +4,7 @@
     --blue: #515b73;
     --link: #3b5591; /*Change color for a tags*/
     --light-gray: #fff8f8; /*Read only*/
-    --gray: #f8f5f5;
+    --gray: #e1dfdf;
     --black: #000;
     --white: #f6f5fa;
     --background: #fff9f9;
@@ -27,7 +27,7 @@
     /* font: inherit; */
 }
 
-ul {
+li {
     list-style: none;
 }
 
@@ -39,6 +39,10 @@ a {
 
 a:hover {
     color: var(--red);
+}
+
+h1 {
+    margin: 1rem 0;
 }
 
 html,
