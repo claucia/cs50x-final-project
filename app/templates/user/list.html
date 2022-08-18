@@ -4,7 +4,7 @@
 {% block title %}Users{% endblock %}
 
 {% block content %}
-<a href="{{ url_for('create_user') }}">Create user</a>
+<a class="create-button" href="{{ url_for('create_user') }}">Create user</a>
 
 <form method="POST">
     {{ render_field(form.name) }}

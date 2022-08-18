@@ -4,7 +4,7 @@
 {% block title %}Donors{% endblock %} 
 
 {% block content %}
-<a href="{{ url_for('create_donor') }}">Create new</a>
+<a class="create-button" href="{{ url_for('create_donor') }}">Create new</a>
 
 <form method="GET">
     {{ render_field(form.name) }}
@@ -18,10 +18,10 @@
       <th>First name</th>
       <th>Last name</th>
       <th>ABO/Rh</th>
-      <th>Phone number</th>
+      <th>Phone</th>
       <th>Email</th>
-      <th>Last donation date</th>
-      <th>Action</th>
+      <th>Last donation</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>

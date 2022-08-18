@@ -10,7 +10,9 @@
     {{ render_field(form.abo_rh) }}
     {{ render_field(form.phone_number) }}
     {{ render_field(form.email) }}
-    {{ render_button('Update donor') }}
-    <a href="{{ url_for('list_donors') }}">Cancel</a>
+    <div class="form-buttons">
+        {{ render_button('Update    ') }}
+        <a class="cancel-button" href="{{ url_for('list_donors') }}">Cancel</a>
+    </div>
 </form>
 {% endblock %}

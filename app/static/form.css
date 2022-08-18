@@ -7,7 +7,7 @@ form{
   margin: 2rem 0;
 }
 
-.create-form-buttons{
+.form-buttons{
   grid-column-start: 2;
   display: flex;
   align-items: center;
@@ -39,7 +39,8 @@ select{
   padding: 0.6rem;
 }
 
-button, .cancel-button{
+button, .cancel-button,
+.create-button{
   padding:0.5rem 2rem;
   color: var(--white);
   border: 1px solid var(--blue);
