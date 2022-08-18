@@ -1,4 +1,4 @@
-main>.content>.stock{
+main>.content>.stock {
   display: grid;
   grid-template-columns: 100px 100px 100px 100px;
   grid-template-rows: 80px 80px;
@@ -15,7 +15,7 @@ main>.content>.stock>.o-positive,
 main>.content>.stock>.a-negative,
 main>.content>.stock>.b-negative,
 main>.content>.stock>.ab-negative,
-main>.content>.stock>.o-negative{
+main>.content>.stock>.o-negative {
   border: 1px solid pink;
   display: flex;
   flex-direction: column;
@@ -34,11 +34,10 @@ main>.content>.dashboard {
 
 main>.content>.dashboard>.pending,
 main>.content>.dashboard>.aproved,
-main>.content>.dashboard>.rejected{
+main>.content>.dashboard>.rejected {
   border: 1px solid pink;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-

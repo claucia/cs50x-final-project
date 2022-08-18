@@ -9,7 +9,7 @@ th {
   padding: 1rem 1rem 1rem 0;
 }
 
-thead:last-child{
+thead:last-child {
   text-align: center;
   color: red;
 }
