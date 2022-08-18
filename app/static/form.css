@@ -1,16 +1,21 @@
 form{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: auto auto auto;
   grid-template-rows: 1fr;
   grid-gap: 1rem;
   align-items: center;
   margin: 2rem 0;
 }
 
+.create-form-buttons{
+  grid-column-start: 2;
+  display: flex;
+  align-items: center;
+}
+
 .field {
   width: 100%;
   margin: .5rem 0;
-  
 }
 
 label {
@@ -34,12 +39,8 @@ select{
   padding: 0.6rem;
 }
 
-/* input:focus{
-  background-color: var(--gray);
-} */
-
 button, .cancel-button{
-  padding:0.5rem 1rem;
+  padding:0.5rem 2rem;
   color: var(--white);
   border: 1px solid var(--blue);
   border-radius: 0.4rem;
