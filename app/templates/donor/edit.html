@@ -7,11 +7,11 @@
 <form method="POST">
     {{ render_field(form.first_name) }}
     {{ render_field(form.last_name) }}
-    {{ render_field(form.abo_rh) }}
+    <span class="read-only">{{ render_field(form.abo_rh) }}</span> 
     {{ render_field(form.phone_number) }}
     {{ render_field(form.email) }}
     <div class="form-buttons">
-        {{ render_button('Update    ') }}
+        {{ render_button('Update') }}
         <a class="cancel-button" href="{{ url_for('list_donors') }}">Cancel</a>
     </div>
 </form>

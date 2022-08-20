@@ -4,7 +4,7 @@
 {% block title %}Create donation{% endblock %}
 
 {% block content %}
-<form method="POST">
+<form class="read-only" method="POST">
     {{ render_field(form.first_name) }}
     {{ render_field(form.last_name) }}
     {{ render_field(form.abo_rh) }}
