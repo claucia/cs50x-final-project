@@ -2,10 +2,10 @@ main>.content>.stock {
   display: grid;
   grid-template-columns: 100px 100px 100px 100px;
   grid-template-rows: 80px 80px;
-  column-gap: 10px;
-  row-gap: 15px;
+  column-gap: 2rem;
+  row-gap: 5rem;
   justify-content: center;
-  margin-top: 3rem;
+  margin: 6rem 0;
 }
 
 main>.content>.stock>.a-positive,
@@ -16,28 +16,63 @@ main>.content>.stock>.a-negative,
 main>.content>.stock>.b-negative,
 main>.content>.stock>.ab-negative,
 main>.content>.stock>.o-negative {
-  border: 1px solid pink;
+  border: 1px solid var(--red);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: 100px;
+  transform: rotate(-50deg);
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;      
+}
+
+main>.content>.stock>.a-positive>span,
+main>.content>.stock>.b-positive>span,
+main>.content>.stock>.ab-positive>span,
+main>.content>.stock>.o-positive>span,
+main>.content>.stock>.a-negative>span,
+main>.content>.stock>.b-negative>span,
+main>.content>.stock>.ab-negative>span,
+main>.content>.stock>.o-negative>span{
+  rotate: 50deg;
+  font-size: 1.3rem;
+  color: var(--blue);
+  
+}
+
+.low{
+  background: linear-gradient(50deg, var(--red), var(--background) 45%);
+}
+
+.medium{
+   background: linear-gradient(50deg, var(--red), var(--background) 65%);
+}
+
+.high {
+  background: linear-gradient(50deg, var(--red), var(--background) 85%);
 }
 
 main>.content>.dashboard {
   display: grid;
-  grid-template-columns: 100px 100px 100px;
-  grid-template-rows: 80px;
-  column-gap: 10px;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto;
+  column-gap: 1rem;
   justify-content: center;
-  margin-top: 3rem;
+  margin: 3rem 0;
 }
 
 main>.content>.dashboard>.pending,
 main>.content>.dashboard>.aproved,
 main>.content>.dashboard>.rejected {
-  border: 1px solid pink;
+  border: 1px solid var(--blue);
+  border-radius: 10px;
+  color: var(--blue);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 2rem;
+  font-size: 1.3rem;  
 }
