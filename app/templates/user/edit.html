@@ -4,7 +4,7 @@
 {% block title %}Edit user{% endblock %}
 
 {% block content %}
-<form method="POST">
+<form class="form-edit-user" method="POST">
     {{ render_field(form.first_name) }}
     {{ render_field(form.last_name) }}
     {{ render_field(form.email) }}

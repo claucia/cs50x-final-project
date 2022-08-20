@@ -7,6 +7,14 @@ form{
   margin: 2rem 0;
 }
 
+.form-create-blood-request{
+  grid-template-columns: 2fr 2fr 1fr 1fr;
+}
+
+.form-edit-user{
+  grid-template-columns: 1fr 1fr;
+}
+
 .form-buttons{
   grid-column-start: 2;
   display: flex;
@@ -54,4 +62,8 @@ button:hover{
   color: var(--red);
 }
 
+.read-only input{
+  background-color: var(--gray);
+  
+}
 
