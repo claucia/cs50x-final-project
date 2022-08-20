@@ -23,8 +23,6 @@
 * {
     margin: 0;
     padding: 0;
-    /* Para estilizar os títulos sem a influencia de h1,h2,... reset everything so we can build this things back in */
-    /* font: inherit; */
 }
 
 li {
@@ -35,6 +33,7 @@ a {
     cursor: pointer;
     text-decoration: none;
     color: var(--link);
+    font-size: 1.1rem;
 }
 
 a:hover {
@@ -70,8 +69,8 @@ main {
 }
 
 footer {
-    background-color: #ddd;
     grid-area: footer;
+    text-align: center;
 }
 
 .content {
