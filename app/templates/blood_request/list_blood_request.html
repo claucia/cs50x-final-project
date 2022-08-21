@@ -6,7 +6,7 @@
 {% block content %}
 
 {% if current_user.is_physician() %}
-<a class="create-button" href="{{ url_for('create_blood_request') }}">Create new</a>
+<a class="create-button" href="{{ url_for('create_blood_request') }}">Add new</a>
 {% endif %}
 
 <form method="POST">

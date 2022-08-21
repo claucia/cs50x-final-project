@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% from "_macros.html" import render_field, render_button %}
 
-{% block title %}Create donor{% endblock %}
+{% block title %}Add new donor{% endblock %}
 
 {% block content %}
 <form method="POST">
@@ -13,7 +13,7 @@
         {{ render_field(form.email) }}
     </div>
     <div class="form-buttons">
-        {{ render_button('Create') }}
+        {{ render_button('Add') }}
         <a class="cancel-button" href="{{ url_for('list_donors') }}">Cancel</a>
     </div>
 </form>
