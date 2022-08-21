@@ -73,7 +73,7 @@ def create_user():
     return render_template('user/create_user.html', form=form)
 
 
-@app.route('/users/<int:user_id>', methods=['POST', 'GET'])
+@app.route('/users/edit/<int:user_id>', methods=['POST', 'GET'])
 @login_required
 @role_required(Role.ADMIN)
 def edit_user(user_id):
