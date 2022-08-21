@@ -152,3 +152,15 @@ class SearchBloodRequestForm(Form):
     abo_rh = SelectField(
         'ABO/Rh', choices=choices_with_empty_option(blood_type_choices))
 
+# Representação de um formulário. É um modelo lógico de um formulário, com os campos, labels e possiveis validaçoes
+class FulfillBloodRequestForm(Form):
+    patient_first_name = StringField(
+        'Patient first name',
+        render_kw={'readonly': True})
+    patient_last_name = StringField(
+        'Patient last name',
+        render_kw={'readonly': True})
+    abo_rh = StringField(
+        'ABO/Rh', render_kw={'readonly': True})
+    units = StringField(
+        'Units', render_kw={'readonly': True})

@@ -78,7 +78,12 @@ def create_user():
 @role_required(Role.ADMIN)
 def edit_user(user_id):
 
+
+    # Busca no banco de dados usuário com esse id
+    # Esta linha fará o SELECT
+    # SELECT users.id AS users_id, users.first_name AS users_first_name, users.last_name AS users_last_name, users.email AS users_email, users.password_hash AS users_password_hash, users.role AS users_role FROM users WHERE users.id = ?
     user = User.query.get(user_id)
+
     if user is None:
         flash('This user could not be found')
         return redirect(url_for('list_users'))
@@ -86,6 +91,7 @@ def edit_user(user_id):
     form = EditUserForm(request.form)
     if request.method == 'POST' and form.validate():
 
+        # Copiar valores do formulário para o objeto
         user.first_name = form.first_name.data
         user.last_name = form.last_name.data
         user.role = form.role.data
@@ -95,6 +101,7 @@ def edit_user(user_id):
         flash('The user has been updated')
         return redirect(url_for('list_users'))
 
+    # Copiar os dados do usuário (user.first_name) que buscou no banco de dados para os campos do formulário (form.first_name.data)                                                       
     form = EditUserForm()
     form.first_name.data = user.first_name
     form.last_name.data = user.last_name

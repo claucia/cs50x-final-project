@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, redirect, flash, url_for
 from app.app import app
 from flask_login import login_required, current_user
 from app.utils import role_required
-from app.forms import CreateBloodRequestForm, SearchBloodRequestForm
+from app.forms import CreateBloodRequestForm, FulfillBloodRequestForm, SearchBloodRequestForm
 from app.extensions import db
 from app.models import BloodRequestStatus, Role, BloodRequest
 from sqlalchemy import or_, and_
@@ -67,3 +67,37 @@ def create_blood_request():
         return redirect(url_for('list_blood_requests'))
 
     return render_template('blood_request/create.html', form=form)
+
+
+@app.route('/blood-requests/fulfill/<int:blood_request_id>', methods=['POST', 'GET'])
+@login_required
+@role_required(Role.ADMIN)
+def fulfill_blood_request(blood_request_id):
+
+    blood_request = BloodRequest.query.get(blood_request_id)
+    if blood_request is None:
+        flash('This blood request could not be found')
+        return redirect(url_for('list_blood_requests'))
+
+    form = FulfillBloodRequestForm(request.form)
+    if request.method == 'POST' and form.validate():
+        blood_request.patient_first_name = form.patient_first_name.data
+        blood_request.patient_last_name = form.patient_last_name.data
+        blood_request.abo_rh = form.abo_rh.data
+        blood_request.units = form.units.data
+
+        db.session.commit()
+
+        # Approved
+        flash('The blood request has been fulfilled')
+        return redirect(url_for('list_blood_requests'))
+
+        # Reject
+    
+    form = FulfillBloodRequestForm()
+    form.patient_first_name.data = blood_request.patient_first_name
+    form.patient_last_name.data = blood_request.patient_last_name
+    form.abo_rh.data = blood_request.abo_rh
+    form.units.data = blood_request.units
+
+    return render_template('blood_request/fulfill_blood_request.html', form=form)

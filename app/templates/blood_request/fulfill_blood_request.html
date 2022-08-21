@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% from "_macros.html" import render_field, render_button %}
+
+{% block title %}Fulfill blood request{% endblock %}
+
+{% block content %}
+<form method="POST">
+    {{ render_field(form.patient_first_name) }}
+    {{ render_field(form.patient_last_name) }}
+    {{ render_field(form.abo_rh) }}
+    {{ render_field(form.units) }}
+    <div class="form-buttons">
+        {{ render_button('Approve') }}
+        {{ render_button('Reject') }}
+        <a class="cancel-button" href="{{ url_for('home') }}">Cancel</a>
+    </div>
+</form>
+{% endblock %}
