@@ -9,9 +9,9 @@
     {{ render_field(form.last_name) }}
     {{ render_field(form.email) }}
     {{ render_field(form.role) }}
-    <div class="form-buttons">
-        {{ render_button('Update') }}
-        <a class="cancel-button" href="{{ url_for('list_users') }}">Cancel</a>
+    {{ render_button('Update') }}
+    <div class="field">
+        <a class=" cancel-button" href="{{ url_for('list_users') }}">Cancel</a>
     </div>
 </form>
 {% endblock %}

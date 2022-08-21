@@ -11,8 +11,20 @@ form{
   grid-template-columns: 2fr 2fr 1fr 1fr;
 }
 
-.form-edit-user{
+.form-edit-user,
+.form-change-password {
   grid-template-columns: 1fr 1fr;
+  grid-column-start: 1;
+}
+
+.form-edit-user button,
+.form-edit-user .cancel-button,
+.form-change-password button,
+.form-change-password .cancel-button{
+  display: inline-block;
+  margin: 0;
+  
+
 }
 
 .form-buttons{
@@ -63,7 +75,6 @@ button:hover{
 }
 
 .read-only input{
-  background-color: var(--gray);
-  
+  background-color: var(--gray); 
 }
 

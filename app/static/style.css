@@ -33,7 +33,7 @@ a {
     cursor: pointer;
     text-decoration: none;
     color: var(--link);
-    font-size: 1.1rem;
+    /* font-size: 1.1rem; */
 }
 
 a:hover {

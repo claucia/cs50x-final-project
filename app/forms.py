@@ -92,7 +92,7 @@ class CreateDonorForm(Form):
         'Last name',
         [validators.DataRequired(), validators.Length(min=2, max=100)])
     abo_rh = SelectField(
-        'ABO/Rh', choices=blood_type_choices)
+        'ABO/Rh', choices=choices_with_empty_option(blood_type_choices))
     phone_number = StringField(
         'Phone number',
         [validators.DataRequired(), validators.Length(min=6, max=100)])
