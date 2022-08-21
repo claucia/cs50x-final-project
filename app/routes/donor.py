@@ -33,7 +33,7 @@ def list_donors():
         filters.append(abo_rh_filter)
 
     donors = Donor.query.filter(and_(*filters))
-    return render_template('donor/list.html', donors=donors, form=form)
+    return render_template('donor/list_donor.html', donors=donors, form=form)
 
 
 @app.route('/donors/new', methods=['POST', 'GET'])
@@ -47,7 +47,7 @@ def create_donor():
         if Donor.query.filter_by(email=form.email.data).first():
             flash('This email/donor has already been registered')
             app.logger.info('%s has already been registered', form.email.data)
-            return render_template('donor/create.html', form=form)
+            return render_template('donor/create_donor.html', form=form)
 
         # Processo de instaciar uma classe
         # donor -> object of Donor
@@ -65,7 +65,7 @@ def create_donor():
         app.logger.info('%s has been registered', donor.email)
         return redirect(url_for('list_donors'))
 
-    return render_template('donor/create.html', form=form)
+    return render_template('donor/create_donor.html', form=form)
 
 
 @app.route('/donors/<int:donor_id>', methods=['POST', 'GET'])
@@ -98,7 +98,7 @@ def edit_donor(donor_id):
     form.phone_number.data = donor.phone_number
     form.email.data = donor.email
 
-    return render_template('donor/edit.html', form=form)
+    return render_template('donor/edit_donor.html', form=form)
 
 
 @app.route('/donors/<int:donor_id>/create_donation', methods=['POST', 'GET'])

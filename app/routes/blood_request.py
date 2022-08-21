@@ -38,7 +38,7 @@ def list_blood_requests():
             filters.append(abo_rh_filter)
 
     requests = BloodRequest.query.filter(and_(*filters))
-    return render_template('blood_request/list.html', requests=requests, form=form)
+    return render_template('blood_request/list_blood_request.html', requests=requests, form=form)
 
 
 @app.route('/blood-requests/new', methods=['POST', 'GET'])
@@ -66,7 +66,7 @@ def create_blood_request():
                         form.patient_first_name.data, form.patient_last_name.data)
         return redirect(url_for('list_blood_requests'))
 
-    return render_template('blood_request/create.html', form=form)
+    return render_template('blood_request/create_blood_request.html', form=form)
 
 
 @app.route('/blood-requests/fulfill/<int:blood_request_id>', methods=['POST', 'GET'])
@@ -92,7 +92,7 @@ def fulfill_blood_request(blood_request_id):
         flash('The blood request has been fulfilled')
         return redirect(url_for('list_blood_requests'))
 
-        # Reject
+        # Reject ?
     
     form = FulfillBloodRequestForm()
     form.patient_first_name.data = blood_request.patient_first_name

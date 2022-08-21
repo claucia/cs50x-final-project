@@ -38,10 +38,10 @@ def list_users():
 
         # The function filter(*criterion) means you can use tuple as it's argument
         users = User.query.filter(and_(*filters))
-        return render_template('user/list.html', users=users, form=form)
+        return render_template('user/list_user.html', users=users, form=form)
 
     users = User.query.all()
-    return render_template('user/list.html', users=users, form=form)
+    return render_template('user/list_user.html', users=users, form=form)
 
 
 @app.route('/users/new', methods=['POST', 'GET'])
@@ -70,7 +70,7 @@ def create_user():
         app.logger.info('%s has been registered', user.email)
         return redirect(url_for('list_users'))
 
-    return render_template('user/create.html', form=form)
+    return render_template('user/create_user.html', form=form)
 
 
 @app.route('/users/<int:user_id>', methods=['POST', 'GET'])
@@ -108,7 +108,7 @@ def edit_user(user_id):
     form.email.data = user.email
     form.role.data = user.role
 
-    return render_template('user/edit.html', form=form)
+    return render_template('user/edit_user.html', form=form)
 
 
 @app.route('/change-password', methods=['POST', 'GET'])
