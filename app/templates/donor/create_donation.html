@@ -4,10 +4,12 @@
 {% block title %}Register donation{% endblock %}
 
 {% block content %}
-<form class="read-only" method="POST">
-    {{ render_field(form.first_name) }}
-    {{ render_field(form.last_name) }}
-    {{ render_field(form.abo_rh) }}
+<form method="POST">
+    <div class="form-fields read-only">
+        {{ render_field(form.first_name) }}
+        {{ render_field(form.last_name) }}
+        {{ render_field(form.abo_rh) }}
+    </div>
     <div class="form-buttons">
         {{ render_button('Register') }}
         <a class="cancel-button" href="{{ url_for('list_donors') }}">Cancel</a>

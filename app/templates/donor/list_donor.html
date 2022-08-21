@@ -7,9 +7,13 @@
 <a class="create-button" href="{{ url_for('create_donor') }}">Create new</a>
 
 <form method="GET">
+  <div class="form-fields">
     {{ render_field(form.name) }}
     {{ render_field(form.abo_rh) }}
+  </div>
+  <div class="form-buttons">
     {{ render_button('Search') }}
+  </div>
 </form>
 
 <table>

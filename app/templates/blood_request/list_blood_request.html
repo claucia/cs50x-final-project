@@ -10,9 +10,13 @@
 {% endif %}
 
 <form method="POST">
+  <div class="form-fields">
     {{ render_field(form.name) }}
     {{ render_field(form.abo_rh) }}
+  </div>
+  <div class="form-buttons">
     {{ render_button('Search') }}
+  </div>
 </form>
 
 <table>

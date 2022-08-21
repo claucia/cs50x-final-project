@@ -4,14 +4,18 @@
 {% block title %}Edit user{% endblock %}
 
 {% block content %}
-<form class="form-edit-user" method="POST">
-    {{ render_field(form.first_name) }}
-    {{ render_field(form.last_name) }}
-    {{ render_field(form.email) }}
-    {{ render_field(form.role) }}
-    {{ render_button('Save') }}
-    <div class="field">
-        <a class=" cancel-button" href="{{ url_for('list_users') }}">Cancel</a>
+<form method="POST">
+    <div class="form-fields">
+        {{ render_field(form.first_name) }}
+        {{ render_field(form.last_name) }}
+        {{ render_field(form.email) }}
+        {{ render_field(form.role) }}
+    </div>
+    <div class="form-buttons">
+        {{ render_button('Save') }}
+        <div class="field">
+            <a class=" cancel-button" href="{{ url_for('list_users') }}">Cancel</a>
+        </div>
     </div>
 </form>
 {% endblock %}

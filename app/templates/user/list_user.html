@@ -7,9 +7,13 @@
 <a class="create-button" href="{{ url_for('create_user') }}">Create user</a>
 
 <form method="POST">
-    {{ render_field(form.name) }}
-    {{ render_field(form.role) }}
-    {{ render_button('Search') }}
+    <div class="form-fields">
+        {{ render_field(form.name) }}
+        {{ render_field(form.role) }}
+    </div>
+    <div class="form-buttons">
+        {{ render_button('Search') }}
+    </div>
 </form>
 
 <table>
