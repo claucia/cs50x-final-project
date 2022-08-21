@@ -5,8 +5,10 @@
 
 {% block content %}
 <form method="POST">
-    {{ render_field(form.email) }}
-    {{ render_field(form.password) }}
-    {{ render_button('Login') }}
+    <div class="form-login">
+        {{ render_field(form.email) }}
+        {{ render_field(form.password) }}
+        {{ render_button('Login') }}
+    </div>
 </form>
 {% endblock %}

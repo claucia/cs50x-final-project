@@ -1,4 +1,4 @@
-.form-fields{
+.form-fields {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
@@ -8,7 +8,7 @@
 
 }
 
-.form-buttons{
+.form-buttons {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,7 +16,7 @@
   margin: 1rem 0;
 }
 
-.form-search{
+.form-search {
   display: grid;
   grid-template-columns: 4fr 2fr 1fr;
   grid-template-rows: 1fr;
@@ -25,9 +25,20 @@
   margin: 2rem 0;
 }
 
+.form-login {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 4rem 20rem;
+}
+
+.form-login button {
+  margin-top: 1rem;
+}
+
 .field {
   width: 100%;
-  /* margin: .5rem 0; */
 }
 
 label {
