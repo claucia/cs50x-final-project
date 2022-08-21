@@ -4,14 +4,12 @@
 {% block title %}Users{% endblock %}
 
 {% block content %}
-<a class="create-button" href="{{ url_for('create_user') }}">Create user</a>
+<a class="create-button" href="{{ url_for('create_user') }}">Create new</a>
 
 <form method="POST">
-    <div class="form-fields">
+    <div class="form-search">
         {{ render_field(form.name) }}
         {{ render_field(form.role) }}
-    </div>
-    <div class="form-buttons">
         {{ render_button('Search') }}
     </div>
 </form>

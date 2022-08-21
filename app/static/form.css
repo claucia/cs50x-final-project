@@ -1,41 +1,33 @@
-form{
+.form-fields{
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
   grid-gap: 1rem;
   align-items: center;
   margin: 2rem 0;
-}
-
-.form-create-blood-request{
-  grid-template-columns: 2fr 2fr 1fr 1fr;
-}
-
-.form-edit-user,
-.form-change-password {
-  grid-template-columns: 1fr 1fr;
-  grid-column-start: 1;
-}
-
-.form-edit-user button,
-.form-edit-user .cancel-button,
-.form-change-password button,
-.form-change-password .cancel-button{
-  display: inline-block;
-  margin: 0;
-  
 
 }
 
 .form-buttons{
-  grid-column-start: 2;
   display: flex;
+  justify-content: center;
   align-items: center;
+  flex-wrap: nowrap;
+  margin: 1rem 0;
+}
+
+.form-search{
+  display: grid;
+  grid-template-columns: 4fr 2fr 1fr;
+  grid-template-rows: 1fr;
+  grid-gap: 1rem;
+  align-items: end;
+  margin: 2rem 0;
 }
 
 .field {
   width: 100%;
-  margin: .5rem 0;
+  /* margin: .5rem 0; */
 }
 
 label {
@@ -67,8 +59,9 @@ button, .cancel-button,
   border-radius: 0.4rem;
   background-color: var(--blue);
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
-  margin-top: 1.5rem;
+  margin-right: 1rem;
 }
+
 
 button:hover{
   color: var(--red);

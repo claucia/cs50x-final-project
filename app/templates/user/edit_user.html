@@ -13,9 +13,7 @@
     </div>
     <div class="form-buttons">
         {{ render_button('Save') }}
-        <div class="field">
-            <a class=" cancel-button" href="{{ url_for('list_users') }}">Cancel</a>
-        </div>
+        <a class=" cancel-button" href="{{ url_for('list_users') }}">Cancel</a>        
     </div>
 </form>
 {% endblock %}
