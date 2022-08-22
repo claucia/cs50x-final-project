@@ -9,11 +9,11 @@ from app.models import BloodRequestStatus, Role, BloodRequest
 from sqlalchemy import or_, and_
 
 
-@app.route('/blood-requests', methods=['POST', 'GET'])
+@app.route('/blood-requests', methods=['GET'])
 @login_required
 def list_blood_requests():
 
-    form = SearchBloodRequestForm(request.form)
+    form = SearchBloodRequestForm(request.args)
     filters = []
     requests = []
 
@@ -21,21 +21,20 @@ def list_blood_requests():
         user_filter = (BloodRequest.user == current_user)
         filters.append(user_filter)
 
-    if request.method == 'POST' and form.validate():
+    
+    name_criteria = form.name.data
+    abo_rh_criteria = form.abo_rh.data
 
-        name_criteria = form.name.data
-        abo_rh_criteria = form.abo_rh.data
+    if(name_criteria):
+        name_filter = or_(
+            BloodRequest.patient_first_name.ilike(f'%{name_criteria}%'),
+            BloodRequest.patient_last_name.ilike(f'%{name_criteria}%')
+        )
+        filters.append(name_filter)
 
-        if(name_criteria):
-            name_filter = or_(
-                BloodRequest.patient_first_name.ilike(f'%{name_criteria}%'),
-                BloodRequest.patient_last_name.ilike(f'%{name_criteria}%')
-            )
-            filters.append(name_filter)
-
-        if(abo_rh_criteria):
-            abo_rh_filter = (BloodRequest.abo_rh == abo_rh_criteria)
-            filters.append(abo_rh_filter)
+    if(abo_rh_criteria):
+        abo_rh_filter = (BloodRequest.abo_rh == abo_rh_criteria)
+        filters.append(abo_rh_filter)
 
     requests = BloodRequest.query.filter(and_(*filters))
     return render_template('blood_request/list_blood_request.html', requests=requests, form=form)

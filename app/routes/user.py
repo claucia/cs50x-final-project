@@ -9,38 +9,32 @@ from app.extensions import db
 from app.utils import role_required
 
 
-@app.route('/users', methods=['POST', 'GET'])
+@app.route('/users', methods=['GET'])
 @login_required
 @role_required(Role.ADMIN)
 def list_users():
 
-    form = SearchUserForm(request.form)
+    form = SearchUserForm(request.args)
     users = []
 
-    if request.method == 'POST' and form.validate():
+    filters = []
+    name_criteria = form.name.data
+    role_criteria = form.role.data
+    
+    if(name_criteria):
+        name_filter = or_(
+            # .ilike: string comparisons case insensitive
+            User.first_name.ilike(f'%{name_criteria}%'),
+            User.last_name.ilike(f'%{name_criteria}%')
+        )
+        filters.append(name_filter)
 
-        filters = []
-        name_criteria = form.name.data
-        role_criteria = form.role.data
-        print(f'Name: {name_criteria}')
+    if(role_criteria):
+        role_filter = (User.role == role_criteria)
+        filters.append(role_filter)
 
-        if(name_criteria):
-            name_filter = or_(
-                # .ilike: string comparisons case insensitive
-                User.first_name.ilike(f'%{name_criteria}%'),
-                User.last_name.ilike(f'%{name_criteria}%'),
-            )
-            filters.append(name_filter)
-
-        if(role_criteria):
-            role_filter = (User.role == role_criteria)
-            filters.append(role_filter)
-
-        # The function filter(*criterion) means you can use tuple as it's argument
-        users = User.query.filter(and_(*filters))
-        return render_template('user/list_user.html', users=users, form=form)
-
-    users = User.query.all()
+    # The function filter(*criterion) means you can use tuple as it's argument
+    users = User.query.filter(and_(*filters))
     return render_template('user/list_user.html', users=users, form=form)
 
 
@@ -78,7 +72,6 @@ def create_user():
 @role_required(Role.ADMIN)
 def edit_user(user_id):
 
-
     # Busca no banco de dados usuário com esse id
     # Esta linha fará o SELECT
     # SELECT users.id AS users_id, users.first_name AS users_first_name, users.last_name AS users_last_name, users.email AS users_email, users.password_hash AS users_password_hash, users.role AS users_role FROM users WHERE users.id = ?
@@ -101,7 +94,7 @@ def edit_user(user_id):
         flash('The user has been updated')
         return redirect(url_for('list_users'))
 
-    # Copiar os dados do usuário (user.first_name) que buscou no banco de dados para os campos do formulário (form.first_name.data)                                                       
+    # Copiar os dados do usuário (user.first_name) que buscou no banco de dados para os campos do formulário (form.first_name.data)
     form = EditUserForm()
     form.first_name.data = user.first_name
     form.last_name.data = user.last_name

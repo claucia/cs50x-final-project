@@ -9,7 +9,7 @@
 <a class="create-button" href="{{ url_for('create_blood_request') }}">Add new</a>
 {% endif %}
 
-<form method="POST">
+<form method="GET">
     <div class="form-search">
         {{ render_field(form.name) }}
         {{ render_field(form.abo_rh) }}
