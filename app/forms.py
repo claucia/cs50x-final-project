@@ -125,6 +125,8 @@ class CreateDonationForm(Form):
         'Last name', render_kw={'readonly': True})
     abo_rh = StringField(
         'ABO/Rh', render_kw={'readonly': True})
+    last_donation_date = StringField(
+        'Last donation', render_kw={'readonly': True})
 
 
 class SearchDonorForm(Form):

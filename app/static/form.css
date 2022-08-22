@@ -71,7 +71,12 @@ button, .cancel-button,
   border-radius: 0.4rem;
   background-color: var(--blue);
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
-  margin-right: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.cancel-button{
+  margin-left: 1rem;
+  
 }
 
 

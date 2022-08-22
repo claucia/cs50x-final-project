@@ -127,5 +127,6 @@ def create_donation(donor_id):
     form.first_name.data = donor.first_name
     form.last_name.data = donor.last_name
     form.abo_rh.data = donor.abo_rh
+    form.last_donation_date.data = donor.last_donation_date
 
     return render_template('donor/create_donation.html', form=form)

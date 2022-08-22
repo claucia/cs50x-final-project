@@ -59,7 +59,7 @@ class Donor(db.Model):
     abo_rh = db.Column(db.String(3), nullable=False)
     phone_number = db.Column(db.String(15), nullable=False)
     email = db.Column(db.String(100), nullable=False, unique=True)
-    last_donation_date = db.Column(db.DateTime(), nullable=True)
+    last_donation_date = db.Column(db.Date(), nullable=True)
 
 
 class Donation(db.Model):
