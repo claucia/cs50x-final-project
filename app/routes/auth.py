@@ -21,11 +21,9 @@ def login():
         password = form.password.data
         if user is not None and check_password_hash(user.password_hash, password):
             login_user(user)
-            app.logger.info('%s logged in successfully', user.email)
             return redirect(url_for('home'))
         else:
-            flash('Invalid credentials')
-            app.logger.info('%s failed to log in', email)
+            flash('Invalid credentials', 'error')
             return redirect(url_for('login'))
 
     return render_template('auth/login.html', form=form)

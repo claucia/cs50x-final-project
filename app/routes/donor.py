@@ -45,7 +45,7 @@ def create_donor():
     if request.method == 'POST' and form.validate():
 
         if Donor.query.filter_by(email=form.email.data).first():
-            flash('This email/donor has already been registered')
+            flash('This email/donor has already been registered', 'error')
             app.logger.info('%s has already been registered', form.email.data)
             return render_template('donor/create_donor.html', form=form)
 
@@ -75,7 +75,7 @@ def edit_donor(donor_id):
 
     donor = Donor.query.get(donor_id)
     if donor is None:
-        flash('This donor could not be found')
+        flash('This donor could not be found', 'error')
         return redirect(url_for('list_donors'))
 
     form = EditDonorForm(request.form)

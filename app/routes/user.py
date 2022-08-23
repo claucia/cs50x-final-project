@@ -47,7 +47,7 @@ def create_user():
     if request.method == 'POST' and form.validate():
 
         if User.query.filter_by(email=form.email.data).first():
-            flash('This email has already been registered')
+            flash('This email has already been registered', 'error')
             app.logger.info('%s has already been registered', user.email)
             return render_template('register.html', form=form)
 
@@ -78,7 +78,7 @@ def edit_user(user_id):
     user = User.query.get(user_id)
 
     if user is None:
-        flash('This user could not be found')
+        flash('This user could not be found', 'error')
         return redirect(url_for('list_users'))
 
     form = EditUserForm(request.form)
@@ -112,7 +112,7 @@ def change_password():
     if request.method == 'POST' and form.validate():
 
         if check_password_hash(current_user.password_hash, form.current_password.data) == False:
-            flash('Your current password is incorrect')
+            flash('Your current password is incorrect', 'error')
             return redirect(url_for('change_password'))
 
         user = User.query.get(current_user.id)

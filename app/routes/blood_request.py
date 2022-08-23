@@ -21,7 +21,6 @@ def list_blood_requests():
         user_filter = (BloodRequest.user == current_user)
         filters.append(user_filter)
 
-    
     name_criteria = form.name.data
     abo_rh_criteria = form.abo_rh.data
 
@@ -75,7 +74,7 @@ def fulfill_blood_request(blood_request_id):
 
     blood_request = BloodRequest.query.get(blood_request_id)
     if blood_request is None:
-        flash('This blood request could not be found')
+        flash('This blood request could not be found', 'error')
         return redirect(url_for('list_blood_requests'))
 
     form = FulfillBloodRequestForm(request.form)
@@ -92,7 +91,7 @@ def fulfill_blood_request(blood_request_id):
         return redirect(url_for('list_blood_requests'))
 
         # Reject ?
-    
+
     form = FulfillBloodRequestForm()
     form.patient_first_name.data = blood_request.patient_first_name
     form.patient_last_name.data = blood_request.patient_last_name

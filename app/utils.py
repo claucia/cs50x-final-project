@@ -24,7 +24,7 @@ def role_required(role):
             if current_user.role == role:
                 return func(*args, **kwargs)
             else:
-                flash("You don't have permissions to access this page.")
+                flash('You don\'t have permissions to access this page.', 'error')
                 return redirect(url_for('home'))
         return wrapper
     return actual_decorator

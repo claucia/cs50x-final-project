@@ -2,15 +2,12 @@
     /* Colors */
     --red: #fd666b;
     --blue: #515b73;
-    --link: #3b5591; /*Change color for a tags*/
-    --light-gray: #fff8f8; /*Read only*/
+    --link: #3b5591;
+    --light-gray: #fff8f8;
     --gray: #e1dfdf;
     --black: #000;
     --white: #f6f5fa;
     --background: #fff9f9;
-
-    /* Font */
-
 }
 
 *,
@@ -77,4 +74,20 @@ footer {
     padding: 1rem 0;
     max-width: 1000px;
     margin: 0 auto;
+}
+
+.flash-message{
+    background-color: rgb(248, 248, 169);
+    color: var(--blue);
+    font-size: 1.1rem;
+    text-align: center;
+    padding: 0.5rem 0;
+}
+
+.flash-error{
+    background-color: #ec9c9f;
+    color: var(--blue);
+    font-size: 1.1rem;
+    text-align: center;
+    padding: 0.5rem 0;
 }
