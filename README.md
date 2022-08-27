@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This is my final project for the CS50 course. Here I had the opportunity to conect almost every topic covert in the course,  Pyhon, SQL, HTML, CSS and Flask, to mention a few.  
+This is my final project for the CS50 course. Here I had the opportunity to connect almost every topic covered in the course such as Pyhon, SQL, HTML, CSS and Flask, to mention a few.  
 The idea of building a blood bank management system came from the desire to connect my current studies in computer science with my professional background as a Biomedical scients.
 
 ## Objectives
@@ -21,7 +21,7 @@ Log in as an admin user is possible to perform the following actions:
 <!-- Screenshots or Gif? -->
 
 ### Donors
-The donor's tab is available only for admin profiles. It lists all the donors that made at least one blood donation at that blood bank. The actions allowed in this tab are:
+The donor's tab is available only for admin users. It lists all the donors that made at least one blood donation at that blood bank. The actions allowed in this tab are:
 - Add new donors;
 - Search for donors already registered;
 - Edit any new information about the donor by clicking on the 'Edit' button;
@@ -30,7 +30,7 @@ The donor's tab is available only for admin profiles. It lists all the donors th
 <!-- Screenshots or Gif? -->
 
 ### Blood requests
-Both users have permission to access this tab. However, Physicians can place a new request, while admin profiles can not do that. On the other hand, at this tab on the admin profile, the user can take actions, such as view the blood request and work on it to fulfillment.  
+Both users, admin and Physicians, have permission to access this tab. However, Physicians can place a new request, while admin profiles can not do that. On the other hand, at this tab on the admin profile, the user can take actions, such as view the blood request and work on it to fulfillment.  
 
 <!-- Screenshots or Gif? -->
 
@@ -45,8 +45,13 @@ A simple yet powerful Python web framework, it provides the technologies, tools,
 ### flask_login
 User session management handles tasks such as logging in, logging out and remembering sessions.
 
-### flask_sqlalchemy
-It provides full functionality and flexibility of SQL to the application.
+
+### flask_sqlalchemy  
+
+- Flask SQLAlchemy is an extension for flask that adds support for SQLAlchemy to flask by adding useful defaults and helpers that simplify basic tasks.
+- SQLAlchemy is an  object relational mapper(ORM) for python.
+- The function of an ORM is to convert normal objects (classes) to SQL tables that can be saved in an SQL database, and it saves each instance of that object under the corresponding table, so an ORM acts an abstraction layer over a database.
+- ORMs make the development of a software product easier as they handle all SQL commands and schemas.
 
 
 ### WTForms

@@ -23,6 +23,7 @@ def choices_with_empty_option(choices):
     return new_choices
 
 
+# Representation of a form. It's a logical model of a form with fields, labels abd validations
 class CreateUserForm(Form):
     first_name = StringField(
         'First name',
@@ -154,7 +155,7 @@ class SearchBloodRequestForm(Form):
     abo_rh = SelectField(
         'ABO/Rh', choices=choices_with_empty_option(blood_type_choices))
 
-# Representação de um formulário. É um modelo lógico de um formulário, com os campos, labels e possiveis validaçoes
+
 class FulfillBloodRequestForm(Form):
     patient_first_name = StringField(
         'Patient first name',

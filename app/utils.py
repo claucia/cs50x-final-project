@@ -7,16 +7,19 @@ from app.app import app
 from app.app_setup import setup
 
 
+# This callback is used to reload the user object from the user ID stored in the session. It should take the str ID of a user, and return the corresponding user object.
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
 
 
+# Before first request create tables in the database
 @app.before_first_request
 def init():
     setup()
 
 
+# Decorator to authorize access by roles
 def role_required(role):
     def actual_decorator(func):
         @wraps(func)

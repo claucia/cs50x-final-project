@@ -5,7 +5,6 @@
   grid-gap: 1rem;
   align-items: center;
   margin: 2rem 0;
-
 }
 
 .form-buttons {
@@ -63,6 +62,11 @@ select{
   padding: 0.6rem;
 }
 
+/* .required::after{
+  content: "*";
+  color: var(--red);
+} */
+
 button, .cancel-button,
 .create-button{
   padding:0.5rem 2rem;
@@ -76,9 +80,7 @@ button, .cancel-button,
 
 .cancel-button{
   margin-left: 1rem;
-  
 }
-
 
 button:hover{
   color: var(--red);
