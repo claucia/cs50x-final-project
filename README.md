@@ -2,15 +2,76 @@
 
 ## Introduction
 
-This is my final project for the CS50 course. Here I had the opportunity to connect almost every topic covered in the course such as Pyhon, SQL, HTML, CSS and Flask, to mention a few.  
-The idea of building a blood bank management system came from the desire to connect my current studies in computer science with my professional background as a Biomedical scients.
+This is my final project for the CS50 course. Here I had the opportunity to connect almost every topic covered in the course for instance Python, SQL, HTML, CSS and Flask. Including very powerful Flask extensions such as flask_login, flask_sqlalchemy and WTForms.  
+The idea of building a blood bank management system came from the desire to connect my current studies in computer science with my professional background as a Biomedical scientist.
 
 ## Objectives
 
 This project aims to develop an application that allows Physicians to place a blood request for their patients. To fulfill that request, the blood bank professional can search in the database for blood bag availability that matches the requirements for that request.  
 Even more, if eventually there are no blood bags available to fulfill a request, the blood bank professional can look to the database for donors with that blood type and invite them to donate.
 
+<br>
+
+## How I planned the web app  
+<br>
+
+![Blood bank management system](/app/static/images/blood-bank-management-system.png)
+
+<br>
+
+# Resolving the dependencies
+
+Before running the application for the first time, use `pip` to resolve the dependencies:
+
+```shell
+$ pip install -r requirements.txt
+```
+
+### Flask
+A simple yet powerful Python web framework, it provides the technologies, tools, and modules used to build the actual functionalities of the web app. It includes functions to parse requests individually and requires the program's code to be organized in a certain way.
+- `app.py`, where the Python code for the web server lives
+- `requeriments.txt`, includes a list of required libraries for the application
+- `static/`, directory of static files, like images and CSS files
+- `templates/`, directory for HTML files that will form pages
+
+### flask_login
+User session management handles tasks such as logging in, logging out and remembering sessions.
+
+### flask_sqlalchemy  
+- Flask SQLAlchemy is an extension for flask that adds support for SQLAlchemy to flask by adding useful defaults and helpers that simplify basic tasks.
+- SQLAlchemy is an  object relational mapper(ORM) for python.
+- The function of an ORM is to convert normal objects (classes) to SQL tables that can be saved in an SQL database, and it saves each instance of that object under the corresponding table, so an ORM acts an abstraction layer over a database.
+- ORMs make the development of a software product easier as they handle all SQL commands and schemas.
+
+### WTForms
+The WTForms is a built-in module of the flask that provides an alternative way of designing forms providing the interactive user interface for the user.
+
+
+# What is inside each directory?
+`app\`  
+ `app.py` - Initiating the Flask application with all the required configurations for the extensions flask_login and flask_sqlalchemy.  
+ `extensions.py` - Creating instances of the main class of each extension.  
+ `utils.py` - Reloading the User object from the user ID stored in the session.Creating tables in the database before the first request.Authorizing access by roles.  
+ `app_setup.py` - Creating tables and populating the database to make it easy to test the app.  
+ `forms.py` - Creating Classes which are a representation of a form. It is a logical model of a form with fields, labels, and validations.  
+ `models.py` - Creating Classes that define the tables structure.
+<hr>
+
+`routes\`  
+`auth.py`  
+`blood_request.py`  
+`donor.py`  
+`home.py`  
+`user.py`
+<hr>
+
+`static\` - all the CSS stylesheet of the application. I have distributed the files in this way: `form.css`, `header.css`, `home.css`, `style.css`, `tables.css`.
+<hr>
+
+
+
 ## Features
+
 ### Users
 The application was designed with two kinds of users in mind, Physicians working in hospitals that are going to make requests. And the blood bank professionals, which will have an admin login, to fulfill the Physicians' requests.  
 Log in as an admin user is possible to perform the following actions:
@@ -34,37 +95,6 @@ Both users, admin and Physicians, have permission to access this tab. However, P
 
 <!-- Screenshots or Gif? -->
 
-## Dependencies
-- What is it and what each of them does?
-- How it solves the problem?
-- How I used each of them?
-
-### Flask
-A simple yet powerful Python web framework, it provides the technologies, tools, and modules used to build the actual functionalities of the web app.
-
-### flask_login
-User session management handles tasks such as logging in, logging out and remembering sessions.
-
-
-### flask_sqlalchemy  
-
-- Flask SQLAlchemy is an extension for flask that adds support for SQLAlchemy to flask by adding useful defaults and helpers that simplify basic tasks.
-- SQLAlchemy is an  object relational mapper(ORM) for python.
-- The function of an ORM is to convert normal objects (classes) to SQL tables that can be saved in an SQL database, and it saves each instance of that object under the corresponding table, so an ORM acts an abstraction layer over a database.
-- ORMs make the development of a software product easier as they handle all SQL commands and schemas.
-
-
-### WTForms
-The WTForms is a built-in module of the flask that provides an alternative way of designing forms providing the interactive user interface for the user.
-
-
-# Resolving the dependencies
-
-Before running the application for the first time, use `pip` to resolve the dependencies:
-
-```shell
-$ pip install -r requirements.txt
-```
 
 # Running the application
 
