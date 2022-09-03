@@ -15,24 +15,19 @@ Even more, if eventually there are no blood bags available to fulfill a request,
 ## How I planned the web app  
 <br>
 
-![Blood bank management system](/app/static/images/blood-bank-management-system.png)
+![Blood bank management system](/assets/blood-bank-management-system.png)
 
 <br>
 
-# Resolving the dependencies
 
-Before running the application for the first time, use `pip` to resolve the dependencies:
-
-```shell
-$ pip install -r requirements.txt
-```
+# Dependencies
 
 ### Flask
 A simple yet powerful Python web framework, it provides the technologies, tools, and modules used to build the actual functionalities of the web app. It includes functions to parse requests individually and requires the program's code to be organized in a certain way.
-- `app.py`, where the Python code for the web server lives
-- `requeriments.txt`, includes a list of required libraries for the application
-- `static/`, directory of static files, like images and CSS files
-- `templates/`, directory for HTML files that will form pages
+- `app.py` where the Python code for the web server lives. Web server that can parse, or analyse, HTTP request headers and return different pages based on the route.
+- `requeriments.txt` includes a list of required libraries for the application.
+- `static/` directory of static files, such as images and CSS files.
+- `templates/` directory for HTML files written with jinja syntax which is a template engine. Using templates we are able to set a basic layout for our pages, this way we can define our header once and keep it consistent over all the pages.
 
 ### flask_login
 User session management handles tasks such as logging in, logging out and remembering sessions.
@@ -44,14 +39,22 @@ User session management handles tasks such as logging in, logging out and rememb
 - ORMs make the development of a software product easier as they handle all SQL commands and schemas.
 
 ### WTForms
-The WTForms is a built-in module of the flask that provides an alternative way of designing forms providing the interactive user interface for the user.
+Forms, is how internet works and how we typically get input from the user whether it is a button or a text box or a dropdown menu. The WTForms is a built-in module of the flask that provides an alternative way of designing forms providing the interactive user interface for the user.
+
+# Resolving the dependencies
+
+Before running the application for the first time, use `pip` to resolve the dependencies:
+
+```shell
+$ pip install -r requirements.txt
+```
 
 
 # What is inside each directory?
 `app\`  
  `app.py` - Initiating the Flask application with all the required configurations for the extensions flask_login and flask_sqlalchemy.  
  `extensions.py` - Creating instances of the main class of each extension.  
- `utils.py` - Reloading the User object from the user ID stored in the session.Creating tables in the database before the first request.Authorizing access by roles.  
+ `utils.py` - Reloading the User object from the user ID stored in the session. Creating tables in the database before the first request. Authorizing access by roles.  
  `app_setup.py` - Creating tables and populating the database to make it easy to test the app.  
  `forms.py` - Creating Classes which are a representation of a form. It is a logical model of a form with fields, labels, and validations.  
  `models.py` - Creating Classes that define the tables structure.
@@ -65,12 +68,12 @@ The WTForms is a built-in module of the flask that provides an alternative way o
 `user.py`
 <hr>
 
-`static\` - all the CSS stylesheet of the application. I have distributed the files in this way: `form.css`, `header.css`, `home.css`, `style.css`, `tables.css`.
+`static\` - all the CSS stylesheets of the application. The files are organised in this way: `form.css`, `header.css`, `home.css`, `style.css`, `tables.css`.
 <hr>
 
 
 
-## Features
+# Features
 
 ### Users
 The application was designed with two kinds of users in mind, Physicians working in hospitals that are going to make requests. And the blood bank professionals, which will have an admin login, to fulfill the Physicians' requests.  

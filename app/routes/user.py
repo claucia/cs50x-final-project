@@ -8,7 +8,7 @@ from app.models import Role, User
 from app.extensions import db
 from app.utils import role_required
 
-
+# @ = decorator. It is used to associate a particular function with a particular URL
 @app.route('/users', methods=['GET'])
 @login_required
 @role_required(Role.ADMIN)
@@ -35,6 +35,11 @@ def list_users():
 
     # The function filter(*criterion) means you can use tuple as it's argument
     users = User.query.filter(and_(*filters))
+
+    # 'users=users'
+    # first users = name of a variable I want to give to the template-list_user.html
+    # second users = this is theactual variable that I want to get the value from
+    # The same aplies to form=form 
     return render_template('user/list_user.html', users=users, form=form)
 
 
