@@ -33,7 +33,7 @@ def list_users():
         role_filter = (User.role == role_criteria)
         filters.append(role_filter)
 
-    # The function filter(*criterion) means you can use tuple as it's argument
+    # function filter(*criterion) means you can use tuple as it's argument
     users = User.query.filter(and_(*filters))
 
     # 'users=users'
@@ -49,6 +49,7 @@ def list_users():
 def create_user():
 
     form = CreateUserForm(request.form)
+    # handle the POST request
     if request.method == 'POST' and form.validate():
 
         if User.query.filter_by(email=form.email.data).first():
@@ -65,20 +66,21 @@ def create_user():
         db.session.add(user)
         db.session.commit()
 
+        # flash = put message in HTTP session to be used in the template to be displayed to the end user 
         flash('The user has been registered')
         app.logger.info('%s has been registered', user.email)
         return redirect(url_for('list_users'))
-
+    # otherwise handle the GET request
     return render_template('user/create_user.html', form=form)
 
 
+# `<int:user_id>` Flask's bult-in URL converter
 @app.route('/users/edit/<int:user_id>', methods=['POST', 'GET'])
 @login_required
 @role_required(Role.ADMIN)
 def edit_user(user_id):
 
-    # Busca no banco de dados usuário com esse id
-    # Esta linha fará o SELECT
+    # It gets the user in the database with this id. This line will do the SELECT.
     # SELECT users.id AS users_id, users.first_name AS users_first_name, users.last_name AS users_last_name, users.email AS users_email, users.password_hash AS users_password_hash, users.role AS users_role FROM users WHERE users.id = ?
     user = User.query.get(user_id)
 
@@ -89,17 +91,18 @@ def edit_user(user_id):
     form = EditUserForm(request.form)
     if request.method == 'POST' and form.validate():
 
-        # Copiar valores do formulário para o objeto
+        # This block of code will copy values from the form to the object
         user.first_name = form.first_name.data
         user.last_name = form.last_name.data
         user.role = form.role.data
 
+        # It will save everithing in the dadabase
         db.session.commit()
 
         flash('The user has been updated')
         return redirect(url_for('list_users'))
 
-    # Copiar os dados do usuário (user.first_name) que buscou no banco de dados para os campos do formulário (form.first_name.data)
+    # This block of code will copy user's data (user.first_name) that got in the database to the form's fields (form.first_name.data)
     form = EditUserForm()
     form.first_name.data = user.first_name
     form.last_name.data = user.last_name
