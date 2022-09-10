@@ -4,7 +4,7 @@
 
 ## Introduction
 
-I am presenting here my final project for the CS50 course. This project allowed me to connect almost every topic covered in the course, for instance, Python, SQL, HTML, CSS, and Flask. Including powerful Flask extensions such as flask_login, flask_sqlalchemy, and WTForms. 
+I am proud to present my final project for the CS50 course. This project gave the opportunity to connect almost every topic covered in the course.For instance, Python, SQL, HTML, CSS, and Flask. Including powerful Flask extensions such as flask_login, flask_sqlalchemy, and WTForms. 
 The idea of building a blood bank management system came from the desire to connect my current studies in Computer Science to my professional background in Biomedical Science.
 
 ## Objectives
@@ -54,72 +54,108 @@ And the application will be available at `http://127.0.0.1:5000`.
 
 ### Flask
 
-A simple yet powerful Python web framework, it provides the technologies, tools, and modules used to build the actual functionalities of the web app. It includes functions to parse requests individually and requires the program's code to be organised in a certain way.  
+A simple yet powerful Python web framework, it provides the technologies, tools, and modules used to build the actual functionalities of the web app. It includes functions to parse requests individually and requires the program's code to be organised in a certain way as follows:  
 
-- `app.py` where the Python code for the web server lives. Web server that can parse, or analyse, HTTP request headers and return different pages based on the route.
-- `requeriments.txt` includes a list of required libraries for the application.
-- `static/` directory of static files, such as images and CSS files.
-- `templates/` directory for HTML files written with jinja syntax which is a template engine. Using templates we are able to set a basic layout for our pages, this way we can define our header once and keep it consistent over all the pages.
+- `app.py`  
+    It's the file where the Python code for the webserver lives. The web server can parse or analyse HTTP request headers and return different pages based on the route.
+- `requeriments.txt`  
+    This file contains a list of required libraries for the application.
+- `static/`  
+    It's a directory of static files, such as images and CSS files.
+- `templates/`  
+    It's a directory for HTML files that uses jinja syntax, a template engine. Using a template to set a basic layout for a page allows us to define the header once and keep it consistent over all the pages.
+
+</br>
 
 ### flask_login
 
-User session management handles tasks such as logging in, logging out and remembering sessions.
+It is a user session management handles tasks such as:
+- `logging in`, 
+- `logging out` and 
+- `remembering sessions`.
+
+</br>
 
 ### flask_sqlalchemy  
 
-- SQLAlchemy is an  object relational mapper(ORM) for python.
-- The function of an ORM is to convert normal objects (classes) to SQL tables that can be saved in an SQL database, and it saves each instance of that object under the corresponding table, so an ORM acts an abstraction layer over a database.
-- ORMs make the development of a software product easier as they handle all SQL commands and schemas.
+- SQLAlchemy is an `Object Relational Mapper(ORM)` for python.
+- The function of an ORM is to convert objects (classes) to SQL tables that can be stored in an SQL database, and it saves each instance of that object under the corresponding table. So an `ORM acts as an abstraction layer over a database`.
+- `ORMs` make software development products easier as they `handle all SQL commands and schemas`.
+
+</br>
 
 ### WTForms
-Forms, is how internet works and how we typically get input from the user whether it is a button or a text box or a dropdown menu. The WTForms is a built-in module of the flask that provides an alternative way of designing forms providing the interactive user interface for the user.
+
+Forms are how the internet works and how we typically get input from the user, whether it is a button, a text box, or a dropdown menu.  
+WTForms is a flexible forms validation and rendering library for Python web development. It can work with whatever web framework and template engine you choose. The WTForms built-in module of flask provides an alternative way of designing forms providing the interactive user interface for the user.
 
 # What each of the files contains and does?
 
-`app\`  
- `app.py` - Initiate the Flask application with all the required configurations for the extensions flask_login and flask_sqlalchemy.  
- `extensions.py` - Creating instances of the main class of each extension.  
- `utils.py` - Reloading the User object from the user ID stored in the session. Creating tables in the database before the first request. Authorizing access by roles.  
- `app_setup.py` - Create tables and populate the database to make it easy to test the app.  
- `forms.py` - Define Classes which are representations of forms. They are logical models of the user forms with fields, labels, and validations.  
- `models.py` - Define Classes for representing the application data model, which will also to the database tables.
-<hr>
+- `app\`  
+ `app.py`  
+ Initiate the Flask application with all the required configurations for the extensions flask_login and flask_sqlalchemy.  
+ `extensions.py`  
+ Create instances of the main class of each extension.  
+ `utils.py`  
+ Reload the User object from the user ID stored in the session.  
+ Create tables in the database before the first request.  
+ Authorize access by roles.  
+ `app_setup.py`  
+ Create tables and populate the database to make it easy to test the app.  
+ `forms.py`  
+ Define Classes which are representations of forms. They are logical models of the user forms with fields, labels, and validations.  
+ `models.py`  
+ Define Classes for representing the application data model, which will also to the database tables.
 
-`routes\` - where the logical content for implementing all the functionalities of each route of the application lives.The files are organised in this way: `auth.py`, `blood_request.py`, `donor.py`, `home.py`, `user.py`.
+- `routes\`  
+Where the logical content for implementing all the functionalities of each route of the application lives.  
+The files are organised in this way:  
+`auth.py`, `blood_request.py`, `donor.py`, `home.py`, `user.py`.
 
-<hr>
+- `static\`  
+All the CSS stylesheets of the application.  
+The files are organised in this way: `form.css`, `header.css`, `home.css`, `style.css`, `tables.css`.
 
-`static\` - all the CSS stylesheets of the application. The files are organised in this way: `form.css`, `header.css`, `home.css`, `style.css`, `tables.css`.
-<hr>
-
-`templates\` - under templates there is a folder for each of the main application features which are: `auth`, `blood_request`, `donor`, `home`, `user`.
+- `templates\`  
+Under templates there is a folder for each of the main application features which are: `auth`, `blood_request`, `donor`, `home`, `user`.
 
 # Features
 
+### Home
+
+It is a dashboard that shows how many blood bags of which blood type is available in the blood bank stock. There are also blood request statistics, with how many pending, approved, and rejected requests.
+
 ### Users
-The application was designed with two kinds of users in mind, Physicians working in hospitals that are going to make requests. And the blood bank professionals, which will have an admin login, to fulfill the Physicians' requests.  
+
+The application was designed with two kinds of users in mind, Physicians working in hospitals that are going to make requests. And the blood bank professionals, will have an admin login to fulfill the Physicians' requests. 
 Log in as an admin user is possible to perform the following actions:
- - Add new users;
- - Edit data from already registered users;
- - Moreover, it can search by name or role for the users listed in the database.
+ - `Add new` users
+ - `Edit` data from already registered users
+ - `Search` by name or role for the users listed in the database
 
 <!-- Screenshots or Gif? -->
 
 ### Donors
-The donor's tab is available only for admin users. It lists all the donors that made at least one blood donation at that blood bank. The actions allowed in this tab are:
-- Add new donors;
-- Search for donors already registered;
-- Edit any new information about the donor by clicking on the 'Edit' button;
-- Finally, register a new donation at the 'Donate' button.
+
+The donor tab is available only for admin users. It lists all the donors that made at least one blood donation at that blood bank. The actions allowed in this tab are:
+- `Add new` donors
+- `Search` for donors already registered
+- Edit any new information about the donor by clicking on the `Edit` button
+- Register a new donation at the `Donate` button.
 
 <!-- Screenshots or Gif? -->
 
 ### Blood requests
-Both users, admin and Physicians, have permission to access this tab. However, Physicians can place a new request, while admin profiles can not do that. On the other hand, at this tab on the admin profile, the user can take actions, such as view the blood request and work on it to fulfillment.  
+
+Both users, admin, and Physicians have permission to access this tab.  
+However, `Physicians can place a new request`, while admin profiles can not do that. On the other hand, at this tab on the `admin profile`, the user can take actions, such as `viewing the blood request and working on it to fulfillment`. 
 
 <!-- Screenshots or Gif? -->
 
+### Change password
+The user is also able to change their password in the `password tab`.   
 
+</br>
 
 # Lessons learned
 
