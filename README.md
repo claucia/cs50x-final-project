@@ -174,8 +174,17 @@ This table shows Flask's built-in URL converters:
 | int       | Accepts integers.                               |
 | float     | Like int but for floating point value           |
 | path      | Like string but accepts slashes.                |
-<br>
+</br>
+
+## GET / POST
+
+![GET/POST](assets/blood-bank-management-system-GET_POST.png)
+
+</br>
 
 ## request.args vs request.form
-- `request.args` contains the URL encoded parameters, the part in the URL after the question mark, from a GET request.
-- `request.form` contains POST data, the form parameters. 
+
+- `request.args`  
+Contains the URL encoded parameters, the part in the URL after the question mark, from a GET request.
+- `request.form`  
+contains POST data, the form parameters.
