@@ -5,8 +5,8 @@ from flask_login import login_required, current_user
 from app.utils import role_required
 from app.forms import CreateBloodRequestForm, FulfillBloodRequestForm, SearchBloodRequestForm
 from app.extensions import db
-from app.models import BloodRequestStatus, Role, BloodRequest
-from sqlalchemy import or_, and_
+from app.models import CAN_RECEIVE_BLOOD_FROM, BloodRequestStatus, Donation, Role, BloodRequest
+from sqlalchemy import or_, and_, asc
 
 
 @app.route('/blood-requests', methods=['GET'])
@@ -77,25 +77,121 @@ def fulfill_blood_request(blood_request_id):
         flash('This blood request could not be found', 'error')
         return redirect(url_for('list_blood_requests'))
 
+    # Obtain compatible blood types
+    compatible_types = CAN_RECEIVE_BLOOD_FROM[blood_request.abo_rh]
+
     form = FulfillBloodRequestForm(request.form)
     if request.method == 'POST' and form.validate():
-        blood_request.patient_first_name = form.patient_first_name.data
-        blood_request.patient_last_name = form.patient_last_name.data
-        blood_request.abo_rh = form.abo_rh.data
-        blood_request.units = form.units.data
 
-        db.session.commit()
+        # Approving?
+        if (request.form.get("submit") == "Approve"): 
 
-        # Approved
-        flash('The blood request has been fulfilled')
-        return redirect(url_for('list_blood_requests'))
+            # Can the status be changed?
+            if (blood_request.status != BloodRequestStatus.PENDING):
+                flash(f'This blood request cannot be approved', 'error')
+                return redirect(request.url)
 
-        # Reject ?
+            # Obtain donation IDs selected by the user
+            compatible_donation_ids = request.form.getlist('donation')
+
+            # Validate the amount of donations selected by the user
+            if (blood_request.units != len(compatible_donation_ids)):
+                flash(f'You must select exactly {blood_request.units} donation(s) to fulfill this request', 'error')
+                return redirect(request.url)
+
+            # Find donations with the given donations IDs
+            compatible_donations = Donation.query.filter(Donation.id.in_(compatible_donation_ids)).all()
+
+            # Validate the amount of donations found in the database
+            if (blood_request.units != len(compatible_donations)):
+                flash(f'The seleted donation(s) cannot be used to fullfil this request. Please try again.', 'error')
+                return redirect(request.url)
+
+            # Iterate over each donation
+            for donation in compatible_donations:
+
+                # Validate blood type
+                if (donation.abo_rh not in compatible_types):
+                    flash(f'The seleted donation(s) cannot be used to fullfil this request. Please try again.', 'error')
+                    return redirect(request.url)
+
+                # Validate if it has not been associated with other blood request
+                if (donation.blood_request_id is not None):
+                    flash(f'The seleted donation(s) cannot be used to fullfil this request. Please try again.', 'error')
+                    return redirect(request.url)
+
+                # Associate each donation with the blood request
+                donation.blood_request_id = blood_request_id
+
+            # Update blood request status to approved
+            blood_request.status = BloodRequestStatus.APPROVED
+
+            # Persist changes to the database
+            db.session.commit()
+
+            flash('The blood request has been approved')
+            return redirect(url_for('list_blood_requests'))
+
+        # Rejecting?
+        elif (request.form.get("submit") == "Reject"): 
+
+            # Can the status be changed?
+            if (blood_request.status != BloodRequestStatus.PENDING):
+                flash(f'This blood request cannot be rejected', 'error')
+                return redirect(request.url)
+
+            # Update blood request status to approved
+            blood_request.status = BloodRequestStatus.REJECTED
+
+            # Persist changes to the database
+            db.session.commit()
+
+            flash('The blood request has been rejected')
+            return redirect(url_for('list_blood_requests'))
+
+        # Hacking to do something else?
+        else:
+
+            flash('Unsupported action')
+            return redirect(request.url)
 
     form = FulfillBloodRequestForm()
     form.patient_first_name.data = blood_request.patient_first_name
     form.patient_last_name.data = blood_request.patient_last_name
     form.abo_rh.data = blood_request.abo_rh
     form.units.data = blood_request.units
+    form.status.data = blood_request.status
 
-    return render_template('blood_request/fulfill_blood_request.html', form=form)
+    ## Only allow approving or rejecting if the status of the request is Pending
+    is_pending = (blood_request.status == BloodRequestStatus.PENDING)
+    donations = []
+
+    if (is_pending == True):
+
+        # Find suitable donations that can be used for fulfilling the request
+        donations = \
+            Donation.query.filter(
+                and_(
+                    Donation.abo_rh.in_(compatible_types),
+                    Donation.blood_request_id.is_(None),
+                )
+            ).order_by(
+                asc(Donation.expiry_date)
+            ).all()
+
+    else:
+
+        # Find the donations that have been previously associated with this blood request
+        donations = \
+            Donation.query.filter(
+                and_(
+                    Donation.blood_request_id == blood_request_id,
+                )
+            ).order_by(
+                asc(Donation.expiry_date)
+            ).all()
+
+    return render_template('blood_request/fulfill_blood_request.html', 
+        form=form,
+        donations=donations,
+        is_pending=is_pending)

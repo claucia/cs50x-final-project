@@ -40,6 +40,13 @@
       <td>{{ request.user.first_name + ' ' + request.user.last_name }}</td>      
       <td>{{ request.request_date.strftime('%Y-%m-%d') }}</td>
       <td>{{ request.status }}</td>
+      <td>
+        {% if request.status == 'Pending' %}
+          <a href="{{ url_for('fulfill_blood_request', blood_request_id=request.id) }}">Fulfill</a>
+        {% else %}
+          <a href="{{ url_for('fulfill_blood_request', blood_request_id=request.id) }}">View</a>
+        {% endif %}
+      </td>
     </tr>
     {% endfor %}
   </tbody>

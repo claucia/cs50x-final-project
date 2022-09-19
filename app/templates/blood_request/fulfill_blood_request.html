@@ -10,11 +10,42 @@
         {{ render_field(form.patient_last_name) }}
         {{ render_field(form.abo_rh) }}
         {{ render_field(form.units) }}
+        {{ render_field(form.status) }}
     </div>
+
+    <table>
+        <thead>
+            <tr>
+                {% if is_pending == True %}
+                <td>Select</td>
+                {% endif %}
+                <td>Type</td>
+                <td>Donation date</td>
+                <td>Expiry date</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for donation in donations %}
+            <tr>
+                {% if is_pending == True %}
+                <td><input type="checkbox" name="donation" value="{{ donation.id }}"></td>
+                {% endif %}
+                <td>{{ donation.abo_rh }}</td>
+                <td>{{ donation.donation_date }}</td>
+                <td>{{ donation.expiry_date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
     <div class="form-buttons">
-        {{ render_button('Approve') }}
-        {{ render_button('Reject') }}
-        <a class="cancel-button" href="{{ url_for('home') }}">Cancel</a>
+
+        {% if is_pending == True %}
+            <input type="submit" name="submit" value="Approve"/>
+            <input type="submit" name="submit" value="Reject"/>
+        {% endif %}
+
+        <a class="cancel-button" href="{{ url_for('list_blood_requests') }}">Cancel</a>
     </div>
 </form>
 {% endblock %}

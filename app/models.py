@@ -43,10 +43,65 @@ class BloodType(object):
     O_NEGATIVE = 'O-'
 
 
+CAN_RECEIVE_BLOOD_FROM = {
+
+    BloodType.A_POSITIVE: [
+        BloodType.A_POSITIVE, 
+        BloodType.A_NEGATIVE,
+        BloodType.O_POSITIVE,
+        BloodType.O_NEGATIVE
+    ],
+
+    BloodType.A_NEGATIVE: [
+        BloodType.A_NEGATIVE,
+        BloodType.O_NEGATIVE
+    ],
+
+    BloodType.AB_POSITIVE: [
+        BloodType.A_POSITIVE,
+        BloodType.A_NEGATIVE,
+        BloodType.B_POSITIVE,
+        BloodType.B_NEGATIVE,
+        BloodType.AB_POSITIVE,
+        BloodType.AB_NEGATIVE,
+        BloodType.O_POSITIVE,
+        BloodType.O_NEGATIVE
+    ],
+
+    BloodType.AB_NEGATIVE: [
+        BloodType.A_NEGATIVE,
+        BloodType.B_NEGATIVE,
+        BloodType.AB_NEGATIVE,
+        BloodType.O_NEGATIVE
+    ],
+
+    BloodType.B_POSITIVE: [
+        BloodType.B_POSITIVE,
+        BloodType.B_NEGATIVE,
+        BloodType.O_POSITIVE,
+        BloodType.O_NEGATIVE
+    ],
+
+    BloodType.B_NEGATIVE: [
+        BloodType.B_NEGATIVE,
+        BloodType.O_NEGATIVE
+    ],
+
+    BloodType.O_POSITIVE: [
+        BloodType.O_POSITIVE,
+        BloodType.O_NEGATIVE
+    ],
+
+    BloodType.O_NEGATIVE: [
+        BloodType.O_NEGATIVE,
+    ]
+
+}
+
 class BloodRequestStatus(object):
     __slots__ = ()
     PENDING = 'Pending'
-    APROVED = 'Aproved'
+    APPROVED = 'Approved'
     REJECTED = 'Rejected'
 
 
@@ -60,18 +115,6 @@ class Donor(db.Model):
     phone_number = db.Column(db.String(15), nullable=False)
     email = db.Column(db.String(100), nullable=False, unique=True)
     last_donation_date = db.Column(db.Date(), nullable=True)
-
-
-class Donation(db.Model):
-    __tablename__ = 'donations'
-
-    id = db.Column(db.Integer, primary_key=True)
-    donor_id = db.Column(db.Integer, db.ForeignKey(Donor.id))
-    abo_rh = db.Column(db.String(3), nullable=False)
-    donation_date = db.Column(db.DateTime(), nullable=False)
-    expiry_date = db.Column(db.DateTime(), nullable=False)
-
-    donor = relationship('Donor')
 
 
 # Blood request
@@ -88,3 +131,18 @@ class BloodRequest(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey(User.id), nullable=False)
 
     user = relationship('User')
+
+
+class Donation(db.Model):
+    __tablename__ = 'donations'
+
+    id = db.Column(db.Integer, primary_key=True)
+    donor_id = db.Column(db.Integer, db.ForeignKey(Donor.id), nullable=False)
+    blood_request_id = db.Column(
+        db.Integer, db.ForeignKey(BloodRequest.id), nullable=True)
+    abo_rh = db.Column(db.String(3), nullable=False)
+    donation_date = db.Column(db.DateTime(), nullable=False)
+    expiry_date = db.Column(db.DateTime(), nullable=False)
+
+    donor = relationship('Donor')
+    blood_request = relationship('BloodRequest')

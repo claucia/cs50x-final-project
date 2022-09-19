@@ -167,3 +167,5 @@ class FulfillBloodRequestForm(Form):
         'ABO/Rh', render_kw={'readonly': True})
     units = StringField(
         'Units', render_kw={'readonly': True})
+    status = StringField(
+        'Status', render_kw={'readonly': True})

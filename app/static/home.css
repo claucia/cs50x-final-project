@@ -64,7 +64,7 @@ main>.content>.dashboard {
 }
 
 main>.content>.dashboard>.pending,
-main>.content>.dashboard>.aproved,
+main>.content>.dashboard>.approved,
 main>.content>.dashboard>.rejected {
   border: 1px solid var(--blue);
   border-radius: 10px;

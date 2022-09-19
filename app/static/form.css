@@ -68,7 +68,8 @@ select{
 } */
 
 button, .cancel-button,
-.create-button{
+.create-button,
+input[type="submit"] {
   padding:0.5rem 2rem;
   color: var(--white);
   border: 1px solid var(--blue);
