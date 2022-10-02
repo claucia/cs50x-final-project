@@ -32,7 +32,7 @@ def list_donors():
         abo_rh_filter = (Donor.abo_rh == abo_rh_criteria)
         filters.append(abo_rh_filter)
 
-    donors = Donor.query.filter(and_(*filters))
+    donors = Donor.query.filter(and_(*filters)).all()
     return render_template('donor/list_donor.html', donors=donors, form=form)
 
 

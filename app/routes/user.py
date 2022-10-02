@@ -34,7 +34,7 @@ def list_users():
         filters.append(role_filter)
 
     # function filter(*criterion) means you can use tuple as it's argument
-    users = User.query.filter(and_(*filters))
+    users = User.query.filter(and_(*filters)).all()
 
     # 'users=users'
     # first users = name of a variable I want to give to the template-list_user.html

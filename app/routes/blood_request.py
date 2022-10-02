@@ -36,7 +36,7 @@ def list_blood_requests():
         abo_rh_filter = (BloodRequest.abo_rh == abo_rh_criteria)
         filters.append(abo_rh_filter)
 
-    requests = BloodRequest.query.filter(and_(*filters))
+    requests = BloodRequest.query.filter(and_(*filters)).all()
     return render_template('blood_request/list_blood_request.html', requests=requests, form=form)
 
 
