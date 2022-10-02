@@ -12,6 +12,8 @@ The idea of building a blood bank management system came from the desire to conn
 This project aims to develop an application that allows Physicians to place a blood request for their patients to a blood bank. To fulfill that request, the blood bank professional can search in the database for blood bag availability that matches the requirements for that request. 
 Even more, if eventually there are no blood bags available to fulfill a request, the blood bank professional can look to the database for donors with that blood type and invite them to donate.
 
+![Compatibility of blood types](/assets/compatibility-of-blood-types.jpeg)
+
 ## How I planned the web app  
 
 ![Blood bank management system](/assets/blood-bank-management-system.png)
