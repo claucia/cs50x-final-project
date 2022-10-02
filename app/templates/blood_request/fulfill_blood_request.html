@@ -13,6 +13,7 @@
         {{ render_field(form.status) }}
     </div>
 
+    {% if is_rejected == False %}
     <table>
         <thead>
             <tr>
@@ -35,6 +36,7 @@
             {% endfor %}
         </tbody>
     </table>
+   {% endif %} 
 
     <div class="form-buttons">
 

@@ -37,7 +37,10 @@ def list_blood_requests():
         filters.append(abo_rh_filter)
 
     requests = BloodRequest.query.filter(and_(*filters)).all()
-    return render_template('blood_request/list_blood_request.html', requests=requests, form=form)
+    return render_template('blood_request/list_blood_request.html', 
+        requests=requests, 
+        form=form,
+        current_user=current_user)
 
 
 @app.route('/blood-requests/new', methods=['POST', 'GET'])
@@ -141,7 +144,7 @@ def fulfill_blood_request(blood_request_id):
                 flash(f'This blood request cannot be rejected', 'error')
                 return redirect(request.url)
 
-            # Update blood request status to approved
+            # Update blood request status to rejected
             blood_request.status = BloodRequestStatus.REJECTED
 
             # Persist changes to the database
@@ -188,7 +191,10 @@ def fulfill_blood_request(blood_request_id):
                 )
             ).all()
 
+    is_rejected = (blood_request.status == BloodRequestStatus.REJECTED)
+
     return render_template('blood_request/fulfill_blood_request.html', 
         form=form,
         donations=donations,
-        is_pending=is_pending)
+        is_pending=is_pending,
+        is_rejected=is_rejected)
