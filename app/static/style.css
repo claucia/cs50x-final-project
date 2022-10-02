@@ -1,6 +1,7 @@
 :root {
     /* Colors */
     --red: #fd666b;
+    --green: #6ef7ae;
     --blue: #515b73;
     --link: #3b5591;
     --light-gray: #fff8f8;
@@ -22,7 +23,7 @@
     padding: 0;
 }
 
-ul>li {
+li {
     list-style: none;
 }
 
@@ -30,7 +31,6 @@ a {
     cursor: pointer;
     text-decoration: none;
     color: var(--link);
-    /* font-size: 1.1rem; */
 }
 
 a:hover {
@@ -81,7 +81,7 @@ footer {
 }
 
 .flash-message{
-    background-color: var(--gray);
+    background-color: var(--green);
     color: var(--blue);
     font-size: 1.1rem;
     text-align: center;

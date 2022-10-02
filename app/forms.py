@@ -145,7 +145,7 @@ class CreateBloodRequestForm(Form):
         'Patient last name',
         [validators.DataRequired(), validators.Length(min=2, max=100)])
     abo_rh = SelectField(
-        'ABO/Rh', choices=blood_type_choices)
+        'ABO/Rh', choices=choices_with_empty_option(blood_type_choices))
     units = IntegerField(
         'Units', [validators.DataRequired()])
 

@@ -8,7 +8,7 @@
     <div class="form-fields">
         {{ render_field(form.first_name) }}
         {{ render_field(form.last_name) }}
-        {{ render_field(form.email) }}
+        <span class="read-only">{{ render_field(form.email) }}</span> 
         {{ render_field(form.role) }}
     </div>
     <div class="form-buttons">

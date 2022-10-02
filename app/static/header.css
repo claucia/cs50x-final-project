@@ -28,9 +28,11 @@ color:var(--blue);
 .authenticated-user {
   display: flex;
   flex-direction: column;
+
 }
 
-.authenticated-user>.authenticated-user-actions>.logout{
-  font-size: 1.5rem;
-  margin-left: 1rem;
+.authenticated-user-actions{
+  display: flex;
+  flex-direction: column;
+  align-items: end;
 }

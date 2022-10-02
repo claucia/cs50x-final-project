@@ -5,9 +5,6 @@ from sqlalchemy.orm import declarative_base, relationship
 Base = declarative_base()
 
 
-BLOOD_BAG_EXPIRY_TIME_IN_DAYS = 42
-
-
 class Role(object):
     __slots__ = ()
     ADMIN = 'admin'
@@ -141,8 +138,7 @@ class Donation(db.Model):
     blood_request_id = db.Column(
         db.Integer, db.ForeignKey(BloodRequest.id), nullable=True)
     abo_rh = db.Column(db.String(3), nullable=False)
-    donation_date = db.Column(db.DateTime(), nullable=False)
-    expiry_date = db.Column(db.DateTime(), nullable=False)
-
+    donation_date = db.Column(db.Date(), nullable=False)
+   
     donor = relationship('Donor')
     blood_request = relationship('BloodRequest')

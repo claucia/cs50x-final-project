@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 from flask import Flask, render_template, request, redirect, flash, url_for
 from flask_login import login_required
 from sqlalchemy import or_, and_
-from app.models import BLOOD_BAG_EXPIRY_TIME_IN_DAYS, Role, Donor, Donation
+from app.models import Role, Donor, Donation
 from app.app import app
 from app.forms import CreateDonorForm, EditDonorForm, CreateDonationForm, SearchDonorForm
 from app.extensions import db
@@ -125,8 +125,7 @@ def create_donation(donor_id):
         donation_date = datetime.now()
         donation = Donation(donor=donor,
                             abo_rh=donor.abo_rh,
-                            donation_date=donation_date,
-                            expiry_date=donation_date + timedelta(days=BLOOD_BAG_EXPIRY_TIME_IN_DAYS))
+                            donation_date=donation_date)
 
         donor.last_donation_date = donation_date
 

@@ -1,7 +1,7 @@
 from flask import session
 from werkzeug.security import generate_password_hash
-from datetime import datetime, timedelta
-from app.models import BLOOD_BAG_EXPIRY_TIME_IN_DAYS, BloodRequest, BloodRequestStatus, BloodType, Role, User, Donor, Donation
+from datetime import datetime
+from app.models import BloodRequest, BloodRequestStatus, BloodType, Role, User, Donor, Donation
 from app.extensions import db
 from app.app import app
 
@@ -209,8 +209,7 @@ def create_donation(donor, donation_date=datetime.now()):
     app.logger.info(f"Creating {donor.abo_rh} donation...")
     donation = Donation(donor=donor,
                         abo_rh=donor.abo_rh,
-                        donation_date=donation_date,
-                        expiry_date=donation_date + timedelta(days=BLOOD_BAG_EXPIRY_TIME_IN_DAYS))
+                        donation_date=donation_date)
     db.session.add(donation)
     donor.last_donation_date = donation_date
 

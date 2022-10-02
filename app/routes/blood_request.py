@@ -1,4 +1,5 @@
 from datetime import datetime
+from random import choices
 from flask import Flask, render_template, request, redirect, flash, url_for
 from app.app import app
 from flask_login import login_required, current_user
@@ -60,8 +61,8 @@ def create_blood_request():
         db.session.commit()
 
         flash('The blood request has been registered')
-        app.logger.info('A blood request has been registered for %s %s',
-                        form.patient_first_name.data, form.patient_last_name.data)
+        # app.logger.info('A blood request has been registered for %s %s',
+        #                 form.patient_first_name.data, form.patient_last_name.data)
         return redirect(url_for('list_blood_requests'))
 
     return render_template('blood_request/create_blood_request.html', form=form)
@@ -175,8 +176,6 @@ def fulfill_blood_request(blood_request_id):
                     Donation.abo_rh.in_(compatible_types),
                     Donation.blood_request_id.is_(None),
                 )
-            ).order_by(
-                asc(Donation.expiry_date)
             ).all()
 
     else:
@@ -187,8 +186,6 @@ def fulfill_blood_request(blood_request_id):
                 and_(
                     Donation.blood_request_id == blood_request_id,
                 )
-            ).order_by(
-                asc(Donation.expiry_date)
             ).all()
 
     return render_template('blood_request/fulfill_blood_request.html', 

@@ -50,7 +50,7 @@
                 <span>Welcome, {{ current_user.first_name }} ({{ current_user.role }})</span>
                 <div class="authenticated-user-actions">
                     <a href="{{ url_for('change_password')}}">Change password</a>
-                    <a class="logout" href="{{ url_for('logout')}}"><i class="bi bi-power"></i></a>
+                    <a href="{{ url_for('logout')}}">Logout</a>
                 </div>                
             </div>
             {% endif %}
