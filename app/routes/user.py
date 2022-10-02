@@ -80,7 +80,7 @@ def create_user():
 @role_required(Role.ADMIN)
 def edit_user(user_id):
 
-    # It gets the user in the database with this id. This line will do the SELECT.
+    # It get the user in the database with this id. This line will do the SELECT.
     # SELECT users.id AS users_id, users.first_name AS users_first_name, users.last_name AS users_last_name, users.email AS users_email, users.password_hash AS users_password_hash, users.role AS users_role FROM users WHERE users.id = ?
     user = User.query.get(user_id)
 
@@ -94,9 +94,8 @@ def edit_user(user_id):
         # This block of code will copy values from the form to the object
         user.first_name = form.first_name.data
         user.last_name = form.last_name.data
-        user.role = form.role.data
-
-        # It will save everithing in the dadabase
+        
+        # It will save everything in the dadabase
         db.session.commit()
 
         flash('The user has been updated')

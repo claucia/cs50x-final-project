@@ -54,10 +54,10 @@ class EditUserForm(Form):
         'E-mail',
         [validators.DataRequired(), validators.Length(min=6, max=100)],
         render_kw={'readonly': True})
-    role = SelectField(
+    role = StringField(
         'Role',
         [validators.DataRequired()],
-        choices=user_role_choices)
+        render_kw={'readonly': True})
 
 
 class LoginForm(Form):
