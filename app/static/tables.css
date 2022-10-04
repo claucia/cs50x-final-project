@@ -15,7 +15,7 @@ thead:last-child {
 }
 
 tbody tr:nth-child(odd) {
-  background-color: var(--gray);
+  background-color: var(--readonly);
 }
 
 td {

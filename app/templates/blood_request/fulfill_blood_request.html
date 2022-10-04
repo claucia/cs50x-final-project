@@ -41,8 +41,8 @@
     <div class="form-buttons">
 
         {% if is_pending == True %}
-            <input type="submit" name="submit" value="Approve"/>
-            <input type="submit" name="submit" value="Reject"/>
+            <input type="submit"  name="submit" value="Approve"/>
+            <input type="submit" class="button-reject" name="submit" value="Reject"/>
         {% endif %}
 
         <a class="cancel-button" href="{{ url_for('list_blood_requests') }}">Cancel</a>

@@ -1,17 +1,35 @@
-header>.content {
+header .content {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 0;
 }
 
-header>.content>.logo>a{
-  font-size: 4rem;
-  color:var(--red);
+.logo {
+  width: 100px;
+  height: 100px;
 }
 
-header>.content>.logo>a:hover{
-color:var(--blue);
+header>.content{
+  font-size: 1.2rem;
+  color: var(--primary);
+  padding: 2rem 0;
+}
+
+.logo a, 
+.navigation a, 
+.authenticated-user a{
+  background-color: var(--background);
+  border: none;
+  padding: 0;
+  font-size: 1.2rem;
+  color: var(--primary);
+}
+
+.logo a:hover,
+.navigation a:hover,
+.authenticated-user a:hover{
+  color:var(--link-hover);
+  text-decoration: underline;
 }
 
 .navigation ul {
@@ -28,7 +46,6 @@ color:var(--blue);
 .authenticated-user {
   display: flex;
   flex-direction: column;
-
 }
 
 .authenticated-user-actions{

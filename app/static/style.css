@@ -1,14 +1,12 @@
 :root {
-    /* Colors */
-    --red: #fd666b;
+    --red: #C12732;
     --green: #6ef7ae;
-    --blue: #515b73;
-    --link: #3b5591;
-    --light-gray: #fff8f8;
-    --gray: #e1dfdf;
-    --black: #000;
-    --white: #f6f5fa;
-    --background: #fff9f9;
+    --primary: #6E6075;
+    --link-hover: #bf8b7f;
+    --secondary: #fff8f8;
+    --readonly:#E5DCDF;
+    --background: #FCF5F0;
+    --highlight-button: #4F4554;
 }
 
 *,
@@ -28,13 +26,18 @@ li {
 }
 
 a {
+    border: 1px solid #6E6075;
+    padding: 0.2rem 1.5rem;
+    border-radius: 0.3rem;
+    background-color: #6E6075;
     cursor: pointer;
     text-decoration: none;
-    color: var(--link);
+    color: var(--secondary);
 }
 
 a:hover {
-    color: var(--red);
+    background-color: var(--highlight-button);
+    color: var(--secondary);
 }
 
 h1 {
@@ -45,7 +48,7 @@ html,
 body {
     margin: 0;
     height: 100%;
-    color: var(--blue);
+    color: var(--primary);
     background-color: var(--background);
 }
 
@@ -71,7 +74,7 @@ footer {
 }
 
 .content {
-    padding: 1rem 0;
+    padding: 5rem 0;
     max-width: 1000px;
     margin: 0 auto;
 }
@@ -82,7 +85,7 @@ footer {
 
 .flash-message{
     background-color: var(--green);
-    color: var(--blue);
+    color: var(--primary);
     font-size: 1.1rem;
     text-align: center;
     padding: 0.5rem 0;
@@ -90,7 +93,7 @@ footer {
 
 .flash-error{
     background-color: var(--red);
-    color: var(--white);
+    color: var(--secondary);
     font-size: 1.1rem;
     text-align: center;
     padding: 0.5rem 0;
