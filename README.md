@@ -4,7 +4,7 @@
 
 ## Introduction
 
-I am proud to present my final project for the CS50 course. This project gave the opportunity to connect almost every topic covered in the course.For instance, Python, SQL, HTML, CSS, and Flask. Including powerful Flask extensions such as flask_login, flask_sqlalchemy, and WTForms. 
+I am proud to present my final project for the CS50's Introduction to Computer Science course. This project gave me the opportunity to connect almost every topic covered in the course.For instance, Python, SQL, HTML, CSS, and Flask. Including powerful Flask extensions such as flask_login, flask_sqlalchemy, and WTForms. 
 The idea of building a blood bank management system came from the desire to connect my current studies in Computer Science to my professional background in Biomedical Science.
 
 ## Objectives
