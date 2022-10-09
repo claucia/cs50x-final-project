@@ -130,7 +130,7 @@ It is a dashboard that shows how many blood bags of which blood type is availabl
 ### Users
 
 The application was designed with two kinds of users in mind, Physicians working in hospitals that are going to make requests. And the blood bank professionals, will have an admin login to fulfill the Physicians' requests. 
-Log in as an admin user is possible to perform the following actions:
+Log in as an admin user allow the user to perform the following actions:
  - `Add new` users
  - `Edit` data from already registered users
  - `Search` by name or role for the users listed in the database
