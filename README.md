@@ -125,7 +125,7 @@ Under templates there is a folder for each of the main application features whic
 
 ### Home
 
-It is a dashboard that shows how many blood bags of which blood type is available in the blood bank stock. There are also blood request statistics, with how many pending, approved, and rejected requests.
+It is a dashboard that shows how many blood bags of which blood type is available in the blood bank stock. There are also blood request statistics showing how many pending, approved, and rejected requests.
 
 ### Users
 
