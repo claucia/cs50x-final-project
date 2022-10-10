@@ -3,13 +3,14 @@
 
 ## Introduction
 
-I am proud to present my final project for the CS50's Introduction to Computer Science course. This project gave me the opportunity to connect almost every topic covered in the course.For instance, Python, SQL, HTML, CSS, and Flask. Including powerful Flask extensions such as flask_login, flask_sqlalchemy, and WTForms.
+I am proud to present my final project for the CS50's Introduction to Computer Science course. This project gave me the opportunity to connect almost every topic learned in the course. For instance, Python, SQL, HTML, CSS, and Flask. Including powerful Flask extensions such as flask_login, flask_sqlalchemy, and WTForms.
 The idea of building a blood bank management system came from the desire to connect my current studies in Computer Science to my professional background in Biomedical Science.
 
 ## Objectives
 
-This project aims to develop an application that allows Physicians to place a blood request for their patients to a blood bank. To fulfill that request, the blood bank professional can search in the database for blood bag availability that matches the requirements for that request.
+This project aims to develop an application that allows Physicians to place a blood request for their patients to a blood bank. In order to fulfill blood requests, the blood bank professional can search in the database for blood bag availability that matches the requirements for that request.
 Even more, if eventually there are no blood bags available to fulfill a request, the blood bank professional can look to the database for donors with that blood type and invite them to donate.
+
 
 ![Compatibility of blood types](/assets/compatibility-of-blood-types.jpeg)
 
@@ -113,39 +114,64 @@ Under templates there is a folder for each of the main application features whic
 
 # Features
 
+### Login
+
+![Login screenshot](/assets/login.png)
+
 ### Home
 
 It is a dashboard that shows how many blood bags of which blood type is available in the blood bank stock. There are also blood request statistics showing how many pending, approved, and rejected requests.
+
+![Home screenshot](/assets/home.png)
 
 ### Users
 
 The application was designed with two kinds of users in mind, Physicians working in hospitals that are going to make requests. And the blood bank professionals, will have an admin login to fulfill the Physicians' requests.
 Logging in as an admin user allow the user to perform the following actions:
  - Add new users
+
+ ![Add new user screenshot](/assets/add-new-user.png)
+
  - Edit data from already registered users
+
+ ![Edit user screenshot](/assets/edit-user.png)
+
  - Search by name or role for the users listed in the database
 
-<!-- Screenshots or Gif? -->
+ ![Users screenshot](/assets/users.png)
 
 ### Donors
 
 The donor tab is available only for admin users. It lists all the donors that made at least one blood donation at that blood bank. The actions allowed in this tab are:
 - Add new donors
-- Search for donors already registered
-- Edit any new information about the donor by clicking on the Edit button
-- Register a new donation at the Donate button.
 
-<!-- Screenshots or Gif? -->
+![Add new donor screenshot](/assets/add-new-donor.png)
+
+- Search for donors already registered
+
+![Donors screenshot](/assets/donors.png)
+
+- Edit any new information about the donor by clicking on the Edit button
+
+![Edit donor screenshot](/assets/edit-donor.png)
+
+- Register a new donation at the Donate button
+
+![Register donation screenshot](/assets/register-donation.png)
+
 
 ### Blood requests
 
 Both users, admin, and Physicians have permission to access this tab.  
 However, Physicians can place a new request, while admin profiles can not do that. On the other hand, at this tab on the admin profile, the user can take actions, such as viewing the blood request and working on it to fulfillment.
 
-<!-- Screenshots or Gif? -->
+![Blood request screenshot](/assets/blood-request.png)
+![Fulfill blood request screenshot](/assets/fulfill-blood-request.png)
 
 ### Change password
 The user is also able to change their password in the password tab.
+
+![Change password screenshot](/assets/change-password.png)
 
 # Lessons learned
 
