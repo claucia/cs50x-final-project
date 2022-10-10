@@ -24,6 +24,15 @@
   margin: 2rem 0;
 }
 
+.form-search-blood-requests {
+  display: grid;
+  grid-template-columns: 4fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-gap: 1rem;
+  align-items: end;
+  margin: 2rem 0;
+}
+
 .form-login, .form-change-password {
   display:flex;
   flex-direction: column;
