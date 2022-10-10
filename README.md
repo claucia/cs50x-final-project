@@ -1,15 +1,14 @@
 # Blood bank management system
 #### Video Demo:  <URL HERE>
-#### Description: 
 
 ## Introduction
 
-I am proud to present my final project for the CS50's Introduction to Computer Science course. This project gave me the opportunity to connect almost every topic covered in the course.For instance, Python, SQL, HTML, CSS, and Flask. Including powerful Flask extensions such as flask_login, flask_sqlalchemy, and WTForms. 
+I am proud to present my final project for the CS50's Introduction to Computer Science course. This project gave me the opportunity to connect almost every topic covered in the course.For instance, Python, SQL, HTML, CSS, and Flask. Including powerful Flask extensions such as flask_login, flask_sqlalchemy, and WTForms.
 The idea of building a blood bank management system came from the desire to connect my current studies in Computer Science to my professional background in Biomedical Science.
 
 ## Objectives
 
-This project aims to develop an application that allows Physicians to place a blood request for their patients to a blood bank. To fulfill that request, the blood bank professional can search in the database for blood bag availability that matches the requirements for that request. 
+This project aims to develop an application that allows Physicians to place a blood request for their patients to a blood bank. To fulfill that request, the blood bank professional can search in the database for blood bag availability that matches the requirements for that request.
 Even more, if eventually there are no blood bags available to fulfill a request, the blood bank professional can look to the database for donors with that blood type and invite them to donate.
 
 ![Compatibility of blood types](/assets/compatibility-of-blood-types.jpeg)
@@ -67,24 +66,15 @@ A simple yet powerful Python web framework, it provides the technologies, tools,
 - `templates/`  
     It's a directory for HTML files that uses jinja syntax, a template engine. Using a template to set a basic layout for a page allows us to define the header once and keep it consistent over all the pages.
 
-</br>
-
 ### flask_login
 
-It is a user session management handles tasks such as:
-- `logging in`, 
-- `logging out` and 
-- `remembering sessions`.
-
-</br>
+It is a user session management handles tasks such as: logging in, logging out and remembering sessions.
 
 ### flask_sqlalchemy  
 
-- SQLAlchemy is an `Object Relational Mapper(ORM)` for python.
-- The function of an ORM is to convert objects (classes) to SQL tables that can be stored in an SQL database, and it saves each instance of that object under the corresponding table. So an `ORM acts as an abstraction layer over a database`.
-- `ORMs` make software development products easier as they `handle all SQL commands and schemas`.
-
-</br>
+- SQLAlchemy is an Object Relational Mapper(ORM) for python.
+- The function of an ORM is to convert objects (classes) to SQL tables that can be stored in an SQL database, and it saves each instance of that object under the corresponding table. So an ORM acts as an abstraction layer over a database.
+- ORMs make software development products easier as they handle all SQL commands and schemas.
 
 ### WTForms
 
@@ -129,35 +119,33 @@ It is a dashboard that shows how many blood bags of which blood type is availabl
 
 ### Users
 
-The application was designed with two kinds of users in mind, Physicians working in hospitals that are going to make requests. And the blood bank professionals, will have an admin login to fulfill the Physicians' requests. 
-Log in as an admin user allow the user to perform the following actions:
- - `Add new` users
- - `Edit` data from already registered users
- - `Search` by name or role for the users listed in the database
+The application was designed with two kinds of users in mind, Physicians working in hospitals that are going to make requests. And the blood bank professionals, will have an admin login to fulfill the Physicians' requests.
+Logging in as an admin user allow the user to perform the following actions:
+ - Add new users
+ - Edit data from already registered users
+ - Search by name or role for the users listed in the database
 
 <!-- Screenshots or Gif? -->
 
 ### Donors
 
 The donor tab is available only for admin users. It lists all the donors that made at least one blood donation at that blood bank. The actions allowed in this tab are:
-- `Add new` donors
-- `Search` for donors already registered
-- Edit any new information about the donor by clicking on the `Edit` button
-- Register a new donation at the `Donate` button.
+- Add new donors
+- Search for donors already registered
+- Edit any new information about the donor by clicking on the Edit button
+- Register a new donation at the Donate button.
 
 <!-- Screenshots or Gif? -->
 
 ### Blood requests
 
 Both users, admin, and Physicians have permission to access this tab.  
-However, `Physicians can place a new request`, while admin profiles can not do that. On the other hand, at this tab on the `admin profile`, the user can take actions, such as `viewing the blood request and working on it to fulfillment`. 
+However, Physicians can place a new request, while admin profiles can not do that. On the other hand, at this tab on the admin profile, the user can take actions, such as viewing the blood request and working on it to fulfillment.
 
 <!-- Screenshots or Gif? -->
 
 ### Change password
-The user is also able to change their password in the `password tab`.   
-
-</br>
+The user is also able to change their password in the password tab.
 
 # Lessons learned
 
