@@ -2,11 +2,13 @@ from unicodedata import numeric
 from numpy import number
 from sqlalchemy import DateTime
 from wtforms import Form, StringField, PasswordField, SelectField, SubmitField, validators, IntegerField
-from app.models import BloodType, Role
+from app.models import BloodRequestStatus, BloodType, Role
 
+# Array of choiced with 1) internal value and 2) value displayed to the user
 user_role_choices = [(Role.ADMIN, 'Administrator'),
                      (Role.PHYSICIAN, 'Physician')]
 
+# Array of choiced with 1) internal value and 2) value displayed to the user
 blood_type_choices = [(BloodType.A_POSITIVE, BloodType.A_POSITIVE),
                       (BloodType.A_NEGATIVE, BloodType.A_NEGATIVE),
                       (BloodType.B_POSITIVE, BloodType.B_POSITIVE),
@@ -16,6 +18,10 @@ blood_type_choices = [(BloodType.A_POSITIVE, BloodType.A_POSITIVE),
                       (BloodType.O_POSITIVE, BloodType.O_POSITIVE),
                       (BloodType.O_NEGATIVE, BloodType.O_NEGATIVE)]
 
+# Array of choiced with 1) internal value and 2) value displayed to the user
+status_choices = [(BloodRequestStatus.PENDING, BloodRequestStatus.PENDING),
+                  (BloodRequestStatus.APPROVED, BloodRequestStatus.APPROVED),
+                  (BloodRequestStatus.REJECTED, BloodRequestStatus.REJECTED)]
 
 def choices_with_empty_option(choices):
     new_choices = choices[:]
@@ -154,6 +160,8 @@ class SearchBloodRequestForm(Form):
     name = StringField('First or last name')
     abo_rh = SelectField(
         'ABO/Rh', choices=choices_with_empty_option(blood_type_choices))
+    status = SelectField(
+        'Status', choices=choices_with_empty_option(status_choices))
 
 
 class FulfillBloodRequestForm(Form):

@@ -24,17 +24,22 @@ def list_blood_requests():
 
     name_criteria = form.name.data
     abo_rh_criteria = form.abo_rh.data
+    status_criteria = form.status.data
 
-    if(name_criteria):
+    if (name_criteria):
         name_filter = or_(
             BloodRequest.patient_first_name.ilike(f'%{name_criteria}%'),
             BloodRequest.patient_last_name.ilike(f'%{name_criteria}%')
         )
         filters.append(name_filter)
 
-    if(abo_rh_criteria):
+    if (abo_rh_criteria):
         abo_rh_filter = (BloodRequest.abo_rh == abo_rh_criteria)
         filters.append(abo_rh_filter)
+
+    if (status_criteria):
+        status_filter = (BloodRequest.status == status_criteria)
+        filters.append(status_filter)
 
     requests = BloodRequest.query.filter(and_(*filters)).all()
     return render_template('blood_request/list_blood_request.html', 
