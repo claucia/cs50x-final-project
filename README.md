@@ -1,5 +1,7 @@
 # Blood bank management system
-#### Video Demo: https://youtu.be/o2R06GgSdeM
+
+- Video: https://youtu.be/o2R06GgSdeM
+- GitHub repository: https://github.com/claucia/cs50x-final-project
 
 ## Introduction
 
@@ -123,17 +125,17 @@ There are also blood request statistics showing the amount of pending, approved,
 
 This functionality is available only to `admin` users, who can perform the following actions:
 
- - Add new users
+- Add new users
   
 ![Add new user screenshot](/assets/add-new-user.png)
 
- - Edit data from existing users
+- Edit data from existing users
 
  ![Edit user screenshot](/assets/edit-user.png)
 
- - Search existing users by name or role
+- Search for existing users by name or role
 
- ![Users screenshot](/assets/users.png)
+ ![Search users screenshot](/assets/search-users.png)
 
 ### Donors
 
@@ -147,33 +149,39 @@ The actions allowed in this functionality are:
 
 - Search for existing donors
 
-![Donors screenshot](/assets/donors.png)
-
-- Edit existing donor details by clicking the _Edit_ button
-
-![Edit donor screenshot](/assets/edit-donor.png)
+![Search donors screenshot](/assets/search-donors.png)
 
 - Register a donation for an existing donor by clicking the _Donate_ button
 
 ![Register donation screenshot](/assets/register-donation.png)
 
+- Edit existing donor details by clicking the _Edit_ button
+
+![Edit donor screenshot](/assets/edit-donor.png)
+
 ### Blood requests
 
 Both `admin` and `physician` users have permission to access this functionality:
 
-- `physician` users can only create blood requests for a given patient, indicating the requested blood type along with the required amoung of units (blood bags).
+- `physician` users can only create blood requests for a given patient, indicating the requested blood type along with the required amount of units (blood bags).
+
+![Blood request physician profile screenshot](/assets/blood-request-physician.png)
+
+![Add new blood request screenshot](/assets/add-new-blood-request.png)
+
 - `admin` users can review the blood requests previously created by `physician` users and they can either approve or reject it, as described below.
+
+![Blood request admin profile screenshot](/assets/blood-request-admin.png)
 
 When fulfilling a blood request, only the compatible blood bags that can be used for fulfilling such request will be displayed, so that the `admin` user can select them.
 
 ![Compatibility of blood types](/assets/compatibility-of-blood-types.jpeg)
 
-Once `admin` users select the compatible blood bags they wish to use for fulfilling a given request, they can indicate that the request has been approved by clicking the _Approve_ button. This will associate the choosen blood bags with the request that has been approved. Those blood request can not be associated with any other requests. 
+![Fulfill blood request screenshot](/assets/fulfill-blood-request.png)
+
+Once `admin` users select the compatible blood bags they wish to use for fulfilling a given request, they can indicate that the request has been approved by clicking the _Approve_ button. This will associate the choosen blood bags with the request that has been approved. Those blood request can not be associated with any other requests.
 
 Blood requests cannot be partially fulfilled. In case there are no enough blood bags available for fulfilling a given request, `admin` users can reject the request by clicking the _Reject_ button, indicating that the blood bank is not able to complete that request.
-
-![Blood request screenshot](/assets/blood-request.png)
-![Fulfill blood request screenshot](/assets/fulfill-blood-request.png)
 
 ### Change password
 
@@ -205,7 +213,6 @@ The Flask's built-in URL converters are listed below:
 | float     | Like int but for floating point value           |
 | path      | Like string, but accepts slashes.               |
 
-
 ### Using `GET` and `POST`
 
 ![GET/POST](assets/blood-bank-management-system-GET_POST.png)
@@ -219,7 +226,7 @@ The Flask's built-in URL converters are listed below:
 
 flask_login helps with user authentication (telling who the user is), but it does not support authorisation (telling what the user can do).
 
-As the application uses have two types of user (`admin` and `physician`) it became necessary to create a custom decorator for checking the user role (see `utils.py`). It was inspired in this [post](https://stackoverflow.com/a/52323346) from Stack Overflow:
+As the application have two types of user (`admin` and `physician`) it became necessary to create a custom decorator for checking the user role (see `utils.py`). It was inspired in this [post](https://stackoverflow.com/a/52323346) from Stack Overflow:
 
 ```python
 # Decorator to authorize access by roles
@@ -242,7 +249,7 @@ During the development, more than often, I messed up with the database and found
 
 So I came up with the `app_setup.py` file: It simply recreates and populates the database for me each time I delete the database file `data.db`. It leverages the SQLAlchemy abstraction, so I don't need to write SQL directly.
 
-### Live refresh for static content
+### Live refresh for creating static content
 
 Before CS50x, I've played with frontend development and I remember how handy the live refresh was when editing static content, such as HTML, CSS, and JavaScript.
 
