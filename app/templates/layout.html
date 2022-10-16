@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='tables.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='form.css') }}">
     
-    <title>{% block title %}{% endblock %}</title>
+    <title>{% block title %}Blood Bank Management System{% endblock %}</title>
 </head>
 
 <body>
@@ -52,6 +52,11 @@
                     <a href="{{ url_for('logout')}}">Logout</a>
                 </div>                
             </div>
+
+            {% else %}
+
+            <h1>Blood Bank Management System</h1>
+
             {% endif %}
 
         </div>
@@ -64,8 +69,8 @@
         </div>
     </main>
     <footer>
-        <div class="content">        
-            <p>Copyright &copy; <script>document.write(new Date().getFullYear())</script> - Cláucia Cambruzzi - All Rights Reserved</p>
+        <div>        
+            <p>Copyright &copy; <script>document.write(new Date().getFullYear())</script> - Cláucia Cambruzzi - Dublin, Ireland </p>
         </div>
     </footer>
 </body>
