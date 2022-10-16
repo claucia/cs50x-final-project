@@ -15,7 +15,7 @@ This project aims to develop an application that allows physicians to place a bl
 
 ## How I planned the web app  
 
-![Blood bank management system](/assets/blood-bank-management-system.png)
+![Blood bank management system](assets/blood-bank-management-system.png)
 
 ## Resolving the dependencies
 
@@ -111,7 +111,7 @@ Users must be authenticated to use the functionalities provided by the applicati
 
 Registered users can authenticate using their credentials:
 
-![Login screenshot](/assets/login.png)
+![Login screenshot](assets/login.png)
 
 ### Home
 
@@ -119,7 +119,7 @@ Displays a dashboard showing how many blood bags of each blood type is available
 
 There are also blood request statistics showing the amount of pending, approved, and rejected requests.
 
-![Home screenshot](/assets/home.png)
+![Home screenshot](assets/home.png)
 
 ### Users
 
@@ -127,15 +127,15 @@ This functionality is available only to `admin` users, who can perform the follo
 
 - Add new users.
   
-![Add new user screenshot](/assets/add-new-user.png)
+![Add new user screenshot](assets/add-new-user.png)
 
 - Edit data from existing users.
 
- ![Edit user screenshot](/assets/edit-user.png)
+ ![Edit user screenshot](assets/edit-user.png)
 
 - Search for existing users by name or role.
 
- ![Search users screenshot](/assets/search-users.png)
+ ![Search users screenshot](assets/search-users.png)
 
 ### Donors
 
@@ -145,19 +145,19 @@ The actions allowed in this functionality are:
 
 - Add new donors.
 
-![Add new donor screenshot](/assets/add-new-donor.png)
+![Add new donor screenshot](assets/add-new-donor.png)
 
 - Search for existing donors.
 
-![Search donors screenshot](/assets/search-donors.png)
+![Search donors screenshot](assets/search-donors.png)
 
 - Register a donation for an existing donor by clicking the _Donate_ button.
 
-![Register donation screenshot](/assets/register-donation.png)
+![Register donation screenshot](assets/register-donation.png)
 
 - Edit existing donor details by clicking the _Edit_ button.
 
-![Edit donor screenshot](/assets/edit-donor.png)
+![Edit donor screenshot](assets/edit-donor.png)
 
 ### Blood requests
 
@@ -165,29 +165,29 @@ Both `admin` and `physician` users have permission to access this functionality:
 
 - `physician` users can only create blood requests for a given patient, indicating the requested blood type along with the required amount of units (blood bags).
 
-![Blood request physician profile screenshot](/assets/blood-request-physician.png)
+![Blood request physician profile screenshot](assets/blood-request-physician.png)
 
-![Add new blood request screenshot](/assets/add-new-blood-request.png)
+![Add new blood request screenshot](assets/add-new-blood-request.png)
 
 - `admin` users can review the blood requests previously created by `physician` users and they can either approve or reject it, as described below.
 
-![Blood request admin profile screenshot](/assets/blood-request-admin.png)
+![Blood request admin profile screenshot](assets/blood-request-admin.png)
 
 When fulfilling a blood request, only the compatible blood bags that can be used for fulfilling such request will be displayed, so that the `admin` user can select them, as displayed in the image below.
 
-![Compatibility of blood types](/assets/compatibility-of-blood-types.jpeg)
+![Compatibility of blood types](assets/compatibility-of-blood-types.jpeg)
 
 Once `admin` users select the compatible blood bags they wish to use for fulfilling a given request, they can indicate that the request has been approved by clicking the _Approve_ button. This will associate the choosen blood bags with the request that has been approved. Those blood request cannot be associated with any other requests.
 
 Blood requests cannot be partially fulfilled. In case there are no enough blood bags available for fulfilling a given request, `admin` users can reject the request by clicking the _Reject_ button, indicating that the blood bank is not able to complete that request.
 
-![Fulfill blood request screenshot](/assets/fulfill-blood-request.png)
+![Fulfill blood request screenshot](assets/fulfill-blood-request.png)
 
 ### Change password
 
 This functionality allows users to change their password.
 
-![Change password screenshot](/assets/change-password.png)
+![Change password screenshot](assets/change-password.png)
 
 ## Lessons learned
 
