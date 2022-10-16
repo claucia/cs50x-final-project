@@ -173,15 +173,15 @@ Both `admin` and `physician` users have permission to access this functionality:
 
 ![Blood request admin profile screenshot](/assets/blood-request-admin.png)
 
-When fulfilling a blood request, only the compatible blood bags that can be used for fulfilling such request will be displayed, so that the `admin` user can select them.
+When fulfilling a blood request, only the compatible blood bags that can be used for fulfilling such request will be displayed, so that the `admin` user can select them, as displayed in the image below.
 
 ![Compatibility of blood types](/assets/compatibility-of-blood-types.jpeg)
-
-![Fulfill blood request screenshot](/assets/fulfill-blood-request.png)
 
 Once `admin` users select the compatible blood bags they wish to use for fulfilling a given request, they can indicate that the request has been approved by clicking the _Approve_ button. This will associate the choosen blood bags with the request that has been approved. Those blood request can not be associated with any other requests.
 
 Blood requests cannot be partially fulfilled. In case there are no enough blood bags available for fulfilling a given request, `admin` users can reject the request by clicking the _Reject_ button, indicating that the blood bank is not able to complete that request.
+
+![Fulfill blood request screenshot](/assets/fulfill-blood-request.png)
 
 ### Change password
 
