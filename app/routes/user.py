@@ -54,7 +54,6 @@ def create_user():
 
         if User.query.filter_by(email=form.email.data).first():
             flash('This email has already been registered', 'error')
-            app.logger.info('%s has already been registered', user.email)
             return render_template('register.html', form=form)
 
         user = User(first_name=form.first_name.data,
