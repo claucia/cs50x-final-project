@@ -125,15 +125,15 @@ There are also blood request statistics showing the amount of pending, approved,
 
 This functionality is available only to `admin` users, who can perform the following actions:
 
-- Add new users
+- Add new users.
   
 ![Add new user screenshot](/assets/add-new-user.png)
 
-- Edit data from existing users
+- Edit data from existing users.
 
  ![Edit user screenshot](/assets/edit-user.png)
 
-- Search for existing users by name or role
+- Search for existing users by name or role.
 
  ![Search users screenshot](/assets/search-users.png)
 
@@ -143,19 +143,19 @@ The donor functionality is available only for `admin` users, who can manage deta
 
 The actions allowed in this functionality are:
 
-- Add new donors
+- Add new donors.
 
 ![Add new donor screenshot](/assets/add-new-donor.png)
 
-- Search for existing donors
+- Search for existing donors.
 
 ![Search donors screenshot](/assets/search-donors.png)
 
-- Register a donation for an existing donor by clicking the _Donate_ button
+- Register a donation for an existing donor by clicking the _Donate_ button.
 
 ![Register donation screenshot](/assets/register-donation.png)
 
-- Edit existing donor details by clicking the _Edit_ button
+- Edit existing donor details by clicking the _Edit_ button.
 
 ![Edit donor screenshot](/assets/edit-donor.png)
 
@@ -177,7 +177,7 @@ When fulfilling a blood request, only the compatible blood bags that can be used
 
 ![Compatibility of blood types](/assets/compatibility-of-blood-types.jpeg)
 
-Once `admin` users select the compatible blood bags they wish to use for fulfilling a given request, they can indicate that the request has been approved by clicking the _Approve_ button. This will associate the choosen blood bags with the request that has been approved. Those blood request can not be associated with any other requests.
+Once `admin` users select the compatible blood bags they wish to use for fulfilling a given request, they can indicate that the request has been approved by clicking the _Approve_ button. This will associate the choosen blood bags with the request that has been approved. Those blood request cannot be associated with any other requests.
 
 Blood requests cannot be partially fulfilled. In case there are no enough blood bags available for fulfilling a given request, `admin` users can reject the request by clicking the _Reject_ button, indicating that the blood bank is not able to complete that request.
 
@@ -185,7 +185,7 @@ Blood requests cannot be partially fulfilled. In case there are no enough blood 
 
 ### Change password
 
-This functionality allows users to change their password:
+This functionality allows users to change their password.
 
 ![Change password screenshot](/assets/change-password.png)
 
